@@ -1,0 +1,60 @@
+name: Storybook CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-test-storybook:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 저장소 체크아웃
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Node.js 설정
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 의존성 설치
+      - name: Install Dependencies
+        run: npm install
+
+      # Storybook 빌드
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      # Chromatic에 배포
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.PR_ACTION_TOKEN }}
+
+      # PR에 배포 링크 코멘트 추가
+      - name: Comment PR with Storybook URL
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PR_ACTION_TOKEN }}
+        with:
+          message: "🚀 Storybook 배포 완료: ${{ steps.chromatic.outputs.storybookUrl }}"
+
+      # ESLint 코드 품질 검사
+      - name: Run ESLint
+        run: npm run lint
+
+      # Slack 알림 전송 (옵션)
+      - name: Slack Notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: '#라스트팡'
+          SLACK_COLOR: ${{ job.status == 'success' && 'good' || 'danger' }}
+          SLACK_MESSAGE: "Storybook 테스트 ${{ job.status }}!"
