@@ -1,0 +1,52 @@
+name: Storybook CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+jobs:
+  storybook:
+    runs-on: ubuntu-20.04
+    outputs:
+      status: ${{ job.status }}
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-storybook
+
+      - name: depedency install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: publish to chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.PR_ACTION_TOKEN }}
+
+      - name: Comment PR with Storybook URL
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: "🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PR_ACTION_TOKEN }}
+
+      # Slack 알림 전송 (옵션)
+      - name: Slack Notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: '#라스트팡'
+          SLACK_COLOR: ${{ job.status == 'success' && 'good' || 'danger' }}
+          SLACK_MESSAGE: "Storybook 테스트 ${{ job.status }}!"
