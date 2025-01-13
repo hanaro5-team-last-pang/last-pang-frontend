@@ -49,4 +49,6 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: '#라스트팡'
           SLACK_COLOR: ${{ job.status == 'success' && 'good' || 'danger' }}
-          SLACK_MESSAGE: "Storybook 테스트 ${{ job.status }}!"
+          SLACK_MESSAGE: |
+            📢 프론트엔드 Pull Request 알림!
+            ${{ github.event.pull_request.title }}, ${{ job.status }}
