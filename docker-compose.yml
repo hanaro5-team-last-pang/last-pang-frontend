@@ -13,7 +13,7 @@ services:
       - traefik.http.services.next-server.loadbalancer.server.port=3000
 
   reverse-proxy:
-    image: "traefik:v3.3.1"
+    image: 'traefik:v3.3.1'
     command:
       #      - '--log.level=DEBUG'
       - '--api.insecure=true'
@@ -24,11 +24,10 @@ services:
       #      - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
       - '--entryPoints.web.address=:80'
     ports:
-      - "80:80"
-      - "8080:8080"
+      - '80:80'
+      - '8080:8080'
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
 #  socket-server:
 #    image: websocket-server:1.0
 #    labels:
