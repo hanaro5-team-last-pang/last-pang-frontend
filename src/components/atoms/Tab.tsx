@@ -34,6 +34,7 @@ export default function Tab({
             return (
               <div className={clsx('py-2', item.tabListClassName)}>
                 <HeadlessTab
+                  key={index}
                   className="mx-2 font-semibold text-xs"
                   onClick={item.tabOnClickEvent}
                 >
@@ -49,7 +50,10 @@ export default function Tab({
         {tabPanelList &&
           tabPanelList.map((item, index) => {
             return (
-              <TabPanel className={clsx(`text-xs`, tabPanelClassName)}>
+              <TabPanel
+                key={index}
+                className={clsx(`text-xs`, tabPanelClassName)}
+              >
                 {item}
               </TabPanel>
             );
