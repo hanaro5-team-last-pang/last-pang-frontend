@@ -18,10 +18,10 @@ export default function Dropdown({
 }: DropdownProps) {
   return (
     <Menu>
-      <MenuButton>{menuButton}</MenuButton>
+      <MenuButton className="items-center">{menuButton}</MenuButton>
       <MenuItems anchor={anchor} className={clsx(``, menuItemsClassName)}>
         {menuItems.map((item, index) => {
-          return <MenuItem>{item}</MenuItem>;
+          return <MenuItem key={index}>{item}</MenuItem>;
         })}
       </MenuItems>
     </Menu>

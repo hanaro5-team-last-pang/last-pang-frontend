@@ -32,7 +32,7 @@ export default function Tab({
         <div className="flex items-center">
           {tabList.map((item, index) => {
             return (
-              <div className={clsx('py-2', item.tabListClassName)}>
+              <div key={index} className={clsx('py-2', item.tabListClassName)}>
                 <HeadlessTab
                   className="mx-2 font-semibold text-xs"
                   onClick={item.tabOnClickEvent}
@@ -49,7 +49,10 @@ export default function Tab({
         {tabPanelList &&
           tabPanelList.map((item, index) => {
             return (
-              <TabPanel className={clsx(`text-xs`, tabPanelClassName)}>
+              <TabPanel
+                key={index}
+                className={clsx(`text-xs`, tabPanelClassName)}
+              >
                 {item}
               </TabPanel>
             );
