@@ -32,7 +32,7 @@ export default function Tab({
         <div className="flex items-center">
           {tabList.map((item, index) => {
             return (
-              <div key={index} className={clsx('py-5', item.tabListClassName)}>
+              <div key={index} className={clsx('py-4', item.tabListClassName)}>
                 <HeadlessTab
                   key={index}
                   className="mx-2 font-semibold text-xs"
