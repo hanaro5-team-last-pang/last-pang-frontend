@@ -1,19 +1,11 @@
 interface BadgeProps {
   text: string;
-  bgColor: string;
-  textColor: string;
-  rounded: string;
+  className: string;
 }
 
-export function Badge({ text, bgColor, textColor, rounded }: BadgeProps) {
+export function Badge({ text, className }: BadgeProps) {
   return (
-    <span
-      className={`inline-block px-3 py-2 mx-1 font-semibold ${rounded}`}
-      style={{
-        backgroundColor: bgColor,
-        color: textColor,
-      }}
-    >
+    <span className={`inline-block px-3 py-2 mx-1 font-semibold ${className}`}>
       {text}
     </span>
   );
