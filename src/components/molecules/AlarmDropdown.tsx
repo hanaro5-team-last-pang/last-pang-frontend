@@ -58,13 +58,11 @@ export default function AlarmDropdown({
     );
   });
   return (
-    <div>
-      <Dropdown
-        menuButton={<CiBellOn size={24} />}
-        menuItems={menuItems}
-        anchor="bottom end"
-        menuItemsClassName="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2"
-      />
-    </div>
+    <Dropdown
+      menuButton={<CiBellOn size={24} />}
+      menuItems={menuItems}
+      anchor="bottom end"
+      menuItemsClassName="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2"
+    />
   );
 }

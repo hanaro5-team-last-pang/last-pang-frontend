@@ -15,7 +15,7 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
     <div>
       <div className="flex items-center mr-10 mb-1">
         <img
-          className="w-12 h-12 rounded-full my-1"
+          className="rounded-full"
           src={userInfo.userImage}
           alt="Profile Image"
         />

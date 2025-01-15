@@ -19,7 +19,7 @@ export default function NavigateButton({
     <button
       type="button"
       onClick={() => router.push(route)}
-      className={`${className} w-full h-full px-4 py-2`}
+      className={`${className} px-4 py-2`}
     >
       {label}
     </button>
