@@ -9,10 +9,9 @@ import { usePathname } from 'next/navigation';
 
 export default function MyPageNavbar() {
   const currentLocation = usePathname();
-  console.log(currentLocation);
 
   return (
-    <div className="rounded-lg scrollbar-hide px-2">
+    <div className="rounded-lg scrollbar-hide">
       <a
         className={clsx(
           'flex my-4 items-center',

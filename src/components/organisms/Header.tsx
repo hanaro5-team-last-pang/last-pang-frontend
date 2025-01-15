@@ -1,4 +1,4 @@
-import NavigateButton from '@/components/atoms/NavigateButton';
+import LinkButton from '@/components/atoms/LinkButton';
 import AlarmDropdown from '@/components/molecules/AlarmDropdown';
 import ProfileDropdown from '@/components/molecules/ProfileDropdown';
 import Image from 'next/image';
@@ -19,8 +19,8 @@ export default function Header({ children, loginStatus }: Props) {
   };
 
   return (
-    <div className="wrapper fixed bg-inherit">
-      <div className="header-skeleton flex items-center">
+    <div className="w-screen fixed bg-inherit">
+      <div className="wrapper header-skeleton flex items-center mx-auto">
         <div className="flex-1">
           <Link href="/">
             <Image
@@ -43,7 +43,7 @@ export default function Header({ children, loginStatus }: Props) {
               <ProfileDropdown userInfo={userInfo} />
             </div>
           ) : (
-            <NavigateButton
+            <LinkButton
               label="로그인"
               route="/login"
               className="bg-hanaGreen80 rounded-2xl text-white text-sm"
