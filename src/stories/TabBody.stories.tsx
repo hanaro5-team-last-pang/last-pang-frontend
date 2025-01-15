@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
 import TabBody from '@/components/molecules/TabBody';
+import { Meta, StoryObj } from '@storybook/react';
 
 // 메타 데이터 설정
 const meta: Meta<typeof TabBody> = {
