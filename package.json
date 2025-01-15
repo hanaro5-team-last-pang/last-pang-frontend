@@ -19,6 +19,7 @@
     "@headlessui/react": "^2.2.0",
     "@storybook/addon-docs": "^8.4.7",
     "@storybook/preset-typescript": "^3.0.0",
+    "ag-grid-react": "^33.0.4",
     "clsx": "^2.1.1",
     "mdx-loader": "^3.0.2",
     "next": "15.1.3",

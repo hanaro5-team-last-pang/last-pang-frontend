@@ -45,7 +45,7 @@ export default function HeaderTab() {
       tabComponent: (
         <div>
           {showTabComponent && (
-            <div className="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2">
+            <div className="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2 bg-white">
               <a className="flex my-4 items-center" href="/mypage">
                 <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
                   <BsPersonWorkspace />

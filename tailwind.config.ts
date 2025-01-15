@@ -57,6 +57,9 @@ export default {
         hanaBlack60: '#898989',
         hanaBlack40: '#B5B6B6',
         hanaBlack20: '#F7F7F7',
+
+        badgePurple: '#AF52DE',
+        badgeGreen: '#34C759',
       },
       screens: {
         xs: '420px',
