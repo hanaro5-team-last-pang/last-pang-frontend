@@ -20,8 +20,8 @@ export default function Header({ children, loginStatus }: Props) {
 
   return (
     <div className="w-screen fixed bg-inherit">
-      <div className="wrapper header-skeleton flex items-center mx-auto">
-        <div className="flex-1">
+      <div className="wrapper header-skeleton flex justify-between items-center mx-auto">
+        <div>
           <Link href="/">
             <Image
               src="/logo_header.png"
@@ -32,7 +32,7 @@ export default function Header({ children, loginStatus }: Props) {
           </Link>
         </div>
         <div>{children}</div>
-        <div className="flex-none">
+        <div>
           {loginStatus ? (
             <div className="flex gap-2">
               <AlarmDropdown
