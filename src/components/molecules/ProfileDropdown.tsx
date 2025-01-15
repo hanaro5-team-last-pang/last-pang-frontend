@@ -1,6 +1,7 @@
 import Dropdown from '@/components/atoms/Dropdown';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { PiShoppingBagOpen, PiUser, PiArrowSquareOut } from 'react-icons/pi';
+import Link from 'next/link';
 
 interface ProfileDropdownProps {
   userInfo: {
@@ -25,24 +26,24 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
       </div>
       <hr className="border-t border-gray-300 mb-3" />
     </div>,
-    <a className="flex my-2 items-center" href="/settings">
+    <Link className="flex my-2 items-center" href="/">
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiShoppingBagOpen />
       </div>
       <div className="text-xs px-2">새 강의 만들기</div>
-    </a>,
-    <a className="flex my-2 items-center" href="/support">
+    </Link>,
+    <Link className="flex my-2 items-center" href="/">
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiUser />
       </div>
       <div className="text-xs px-2">마이 페이지</div>
-    </a>,
-    <a className="flex my-2 items-center" href="/support">
+    </Link>,
+    <Link className="flex my-2 items-center" href="/">
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiArrowSquareOut />
       </div>
       <div className="text-xs px-2">로그아웃</div>
-    </a>,
+    </Link>,
   ];
 
   return (
