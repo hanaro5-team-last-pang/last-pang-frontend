@@ -1,3 +1,7 @@
+'use client';
+
+// 로그아웃 이벤트로 인한 클라이언트 컴포넌트로 변환 필요
+import Button from '@/components/atoms/Button';
 import Dropdown from '@/components/atoms/Dropdown';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { PiShoppingBagOpen, PiUser, PiArrowSquareOut } from 'react-icons/pi';
@@ -26,24 +30,28 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
       </div>
       <hr className="border-t border-gray-300 mb-3" />
     </div>,
-    <Link className="flex my-2 items-center" href="/">
+    <Link className="flex my-2 items-center" href="/open-mentoring">
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiShoppingBagOpen />
       </div>
       <div className="text-xs px-2">새 강의 만들기</div>
     </Link>,
-    <Link className="flex my-2 items-center" href="/">
+    <Link className="flex my-2 items-center" href="/mypage">
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiUser />
       </div>
       <div className="text-xs px-2">마이 페이지</div>
     </Link>,
-    <Link className="flex my-2 items-center" href="/">
+    <Button
+      className="flex my-2 items-center"
+      type="button"
+      onClick={() => console.log('로그아웃되었습니다.')}
+    >
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiArrowSquareOut />
       </div>
       <div className="text-xs px-2">로그아웃</div>
-    </Link>,
+    </Button>,
   ];
 
   return (
@@ -58,7 +66,7 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
       menuItems={menuItems}
       anchor={'bottom start'}
       menuItemsClassName={
-        'my-2 rounded-lg scrollbar-hide border border-gray-200 p-2 shadow-lg'
+        'bg-white my-2 rounded-lg scrollbar-hide border border-gray-200 p-2 shadow-lg'
       }
     />
   );
