@@ -33,7 +33,7 @@ export default function TabBody({
       <Tab
         tabList={tabList.map((item, index) => ({
           ...item,
-          tabListClassName: clsx( 'flex-1 border border-gray-300 text-center', {
+          tabListClassName: clsx('flex-1 border border-gray-300 text-center', {
             'rounded-tl-lg': index === 0, // 첫 번째 탭일때 왼쪽 모서리 라운드
             'rounded-tr-lg': index === tabList.length - 1, // 마지막 탭의 오른쪽 모서리 라운드
             'bg-gray-100': selectedIndex === index, // 선택된 탭 배경색 설정
