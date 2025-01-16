@@ -4,9 +4,9 @@ import { JSX } from 'react';
 interface IconBadgeProps {
   icon: JSX.Element;
   text: string;
-  gapLength: string;
-  iconClassName: string;
-  textClassName: string;
+  gapLength?: string;
+  iconClassName?: string;
+  textClassName?: string;
 }
 export default function IconBadge({
   icon,
