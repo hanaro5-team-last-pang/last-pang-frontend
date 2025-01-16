@@ -16,6 +16,8 @@ export const Default: StoryObj = {
       participants={5}
       max_participants={10}
       category="개발"
+      route="/mypage"
+      imageSrc="/logo_header.png"
     />
   ),
 };

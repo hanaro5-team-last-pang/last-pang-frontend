@@ -1,7 +1,9 @@
 import { Badge } from '@/components/atoms/Badge';
+import IconBadge from '@/components/atoms/IconBadge';
 import LinkButton from '@/components/atoms/LinkButton';
 import { FaRegCalendar, FaRegClock } from 'react-icons/fa6';
 import { IoPerson } from 'react-icons/io5';
+import Image from 'next/image';
 
 interface MentoringListProps {
   title: string;
@@ -11,6 +13,8 @@ interface MentoringListProps {
   participants: number;
   max_participants: number;
   category: string;
+  imageSrc: string;
+  route: string;
 }
 
 export default function MentoringList({
@@ -21,37 +25,47 @@ export default function MentoringList({
   participants,
   max_participants,
   category,
+  imageSrc,
+  route,
 }: MentoringListProps) {
   return (
-    <div className="flex border rounded-2xl shadow-md overflow-hidden">
-      <div className="relative w-2/5 bg-ourGreen text-white flex items-center justify-center">
+    <div className="flex border rounded-2xl shadow-md overflow-hidden h-52">
+      <div className="relative w-2/5 text-white flex items-center justify-center">
         <div>
           <Badge
             text={category}
             className="rounded-lg absolute top-3 left-2 z-10 bg-red-500"
           />
         </div>
-        <img
-          src="/" // 이미지 경로'
-          alt={''}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <Image src={imageSrc} alt={''} fill />
       </div>
       <div className="flex-1 p-4 ">
         <div className="text-xl font-bold mb-1">{title}</div>
         <div className="text-gray-700 mb-2"> {mentor_name} 멘토</div>
-        <div className="flex items-center text-gray-700 mb-1">
-          <FaRegCalendar className="mr-1 text-ourGreen  text-lg font-bold" />{' '}
-          {start_time}{' '}
-          <FaRegClock className="ml-3 mr-1 text-ourGreen  text-lg font-bold" />{' '}
-          {duration}시간{' '}
-          <IoPerson className="ml-3 mr-1 text-ourGreen text-lg font-bold" />{' '}
-          {participants}/{max_participants}
+        <div className="flex items-center mb-1">
+          <IconBadge
+            icon={<FaRegCalendar className="text-ourGreen text-lg font-bold" />}
+            text={start_time}
+            gapLength="2"
+            textClassName="mr-3 text-gray-700"
+          />
+          <IconBadge
+            icon={<FaRegClock className="text-ourGreen text-lg font-bold" />}
+            text={`${duration}시간`}
+            gapLength="2"
+            textClassName="mr-3 text-gray-700"
+          />
+          <IconBadge
+            icon={<IoPerson className="text-ourGreen text-lg font-bold" />}
+            text={`${participants}/${max_participants}`}
+            gapLength="2"
+            textClassName="mr-3 text-gray-700"
+          />
         </div>
         <div className="flex justify-end">
           <LinkButton
             label="자세히 보기"
-            route="/mentorings/{mentoring_id}"
+            route={route}
             className="mt-1 font-bold hover:text-ourGreen"
           />
         </div>
