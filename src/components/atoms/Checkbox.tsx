@@ -6,6 +6,7 @@ interface CheckboxProps {
   setChecked: (checked: boolean) => void;
   text: string;
   className?: string;
+  textClassName?: string;
 }
 
 export default function Checkbox({
@@ -13,6 +14,7 @@ export default function Checkbox({
   setChecked,
   text,
   className,
+  textClassName,
 }: CheckboxProps) {
   return (
     <div className="flex items-center">
@@ -37,7 +39,7 @@ export default function Checkbox({
           />
         </svg>
       </HeadlessCheckbox>
-      {text}
+      <div className={clsx(``, textClassName)}>{text}</div>
     </div>
   );
 }
