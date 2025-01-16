@@ -14,7 +14,7 @@ export default function Layout({ panel, children }: Props) {
         <HeaderTab />
       </Header>
       <div className="header-skeleton"></div>
-      <div className="wrapper grid grid-cols-1 lg:grid-cols-2 mt-12">
+      <div className="wrapper grid grid-cols-1 lg:grid-cols-2 mt-12 items-center">
         <div className="hidden lg:block">{panel}</div>
         <div>{children}</div>
       </div>

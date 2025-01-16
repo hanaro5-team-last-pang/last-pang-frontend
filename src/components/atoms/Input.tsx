@@ -28,7 +28,7 @@ export default function Input({
   return (
     <div>
       <div>
-        <label className={`block mb-1 ${labelClassName}`}> {label}</label>
+        <label className={`block mb-1 ${labelClassName}`}>{label}</label>
         {children ? (
           <div
             className={`flex items-center w-full rounded-lg px-3 py-2 border focus:ring-2 focus:ring-ourGreen focus:outline-none ${className}`}

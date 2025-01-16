@@ -50,10 +50,7 @@ export default function Tab({
         {tabPanelList &&
           tabPanelList.map((item, index) => {
             return (
-              <TabPanel
-                key={index}
-                className={clsx(`text-xs`, tabPanelClassName)}
-              >
+              <TabPanel key={index} className={clsx(``, tabPanelClassName)}>
                 {item}
               </TabPanel>
             );

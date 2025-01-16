@@ -29,7 +29,7 @@ export default function Page() {
 
   return (
     <form action={formAction}>
-      <div className="mt-14 px-12 font-medium">
+      <div className="mt-14 px-12">
         <div>
           <div className="text-center font-bold text-3xl">로그인</div>
           <div className="text-center text-sm my-2 text-gray-400">
@@ -72,7 +72,7 @@ export default function Page() {
           <Button
             type="submit"
             text="로그인"
-            className="bg-hanaGreen80 rounded-lg text-white text-sm"
+            className="w-full h-full bg-hanaGreen80 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
           />
           <div className="flex justify-center gap-2">
             <div className="text-xs text-gray-600">
