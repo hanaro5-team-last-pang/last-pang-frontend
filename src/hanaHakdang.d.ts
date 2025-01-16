@@ -9,3 +9,11 @@ export type LoginType = {
   email: string;
   password: string;
 };
+
+export type MenteeSignUpType = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  userName: string;
+  birthDate: string;
+};

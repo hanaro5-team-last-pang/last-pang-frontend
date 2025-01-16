@@ -9,7 +9,6 @@ interface ButtonProps {
   disabled?: boolean;
   text?: string;
   className?: string;
-  textColor?: string;
 }
 
 export default function Button({
@@ -19,7 +18,6 @@ export default function Button({
   disabled = false,
   text,
   className,
-  textColor = 'text-white',
 }: ButtonProps) {
   return (
     <div>
@@ -33,23 +31,16 @@ export default function Button({
           {children}
         </HeadlessButton>
       ) : (
-        <div
-          className={clsx(
-            'px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition cursor-not-allowed',
-            className
-          )}
-        >
-          <HeadlessButton
-            type={type}
-            onClick={onClick}
-            disabled={disabled}
-            className={`w-full h-full text-md
-          ${textColor}
+        <HeadlessButton
+          type={type}
+          onClick={onClick}
+          disabled={disabled}
+          className={`
+          ${className}
         `}
-          >
-            {text}
-          </HeadlessButton>
-        </div>
+        >
+          {text}
+        </HeadlessButton>
       )}
     </div>
   );

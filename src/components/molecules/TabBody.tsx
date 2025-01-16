@@ -1,3 +1,5 @@
+'use client';
+
 import Tab from '@/components/atoms/Tab';
 import clsx from 'clsx';
 import { JSX, useState } from 'react';
