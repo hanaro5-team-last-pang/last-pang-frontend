@@ -13,7 +13,9 @@ export default function HeaderPageMenu() {
         currentLocation !== '/signup' && (
           <div className="bg-gray-200">
             <div className="wrapper header-menu-skeleton">
-              <div className="py-2 text-gray-600">{currentPageMenu}</div>
+              <div className="py-2 text-gray-600 text-sm font-light">
+                {currentPageMenu}
+              </div>
             </div>
           </div>
         )}

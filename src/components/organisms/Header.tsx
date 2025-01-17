@@ -17,6 +17,7 @@ export default function Header({ children }: Props) {
     username: '정중일',
     userAge: 45,
     userImage: 'https://placehold.co/25x25',
+    userRole: 'mentor',
   };
 
   return (
