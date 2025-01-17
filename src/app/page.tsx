@@ -15,10 +15,9 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <>
-      <Header loginStatus={false}>
+      <Header>
         <HeaderTab />
       </Header>
-      <div className="header-skeleton"></div>
       <div>
         <div className="relative w-full">
           <Image src={landing} alt="랜딩이미지" layout="responsive" />

@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <Header loginStatus={true}>
+      <Header>
         <HeaderTab />
       </Header>
       <div className="header-skeleton"></div>

@@ -7,12 +7,14 @@ export default function HeaderPageMenu() {
   const currentLocation = usePathname();
   const currentPageMenu = PageUtils.findCurrentLocation(currentLocation);
   return (
-    <div className="w-full bg-gray-200">
+    <div>
       {currentLocation !== '/' &&
         currentLocation !== '/login' &&
         currentLocation !== '/signup' && (
-          <div className="sm:px-20 px-8 py-2 text-gray-600">
-            {currentPageMenu}
+          <div className="bg-gray-200">
+            <div className="wrapper header-menu-skeleton">
+              <div className="py-2 text-gray-600">{currentPageMenu}</div>
+            </div>
           </div>
         )}
     </div>
