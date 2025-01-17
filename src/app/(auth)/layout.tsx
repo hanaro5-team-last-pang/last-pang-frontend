@@ -10,7 +10,7 @@ interface Props {
 export default function Layout({ panel, children }: Props) {
   return (
     <>
-      <Header loginStatus={false}>
+      <Header>
         <HeaderTab />
       </Header>
       <div className="header-skeleton"></div>

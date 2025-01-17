@@ -1,7 +1,6 @@
 'use client';
 
 import Tab from '@/components/atoms/Tab';
-import { BsPersonWorkspace } from 'react-icons/bs';
 import { IoIdCardOutline } from 'react-icons/io5';
 import { MdOutlineAccountBox } from 'react-icons/md';
 import { PiShoppingBagOpen } from 'react-icons/pi';
@@ -9,15 +8,17 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 export default function HeaderTab() {
+  const loginUserRole = 'mentor'; // 로그인 상태 관리는 전역 상태 관리로 이루어질 예정
   const router = useRouter();
   const currentLocation = usePathname();
   const [showTabComponent, setShowTabComponent] = useState(false);
+
   const handleShowComponent = () => {
-    if (showTabComponent) {
-      setShowTabComponent(false);
-    } else {
-      setShowTabComponent(true);
-    }
+    setShowTabComponent((prev) => {
+      let newState = prev;
+      newState = !newState;
+      return newState;
+    });
   };
 
   const tabList = [
@@ -46,27 +47,17 @@ export default function HeaderTab() {
         <div>
           {showTabComponent && (
             <div className="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2 bg-white">
-              <a className="flex my-4 items-center" href="/mypage">
-                <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
-                  <BsPersonWorkspace />
-                </div>
-                <div className="text-sm px-2">나의 공간</div>
-              </a>
-              <a className="flex my-4 items-center" href="/mypage/mentorings">
-                <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
-                  <PiShoppingBagOpen />
-                </div>
-                <div className="text-sm px-2">멘토링 기록</div>
-              </a>
-              <a
-                className="flex my-4 items-center"
-                href="/mypage/card-settings"
-              >
-                <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
-                  <IoIdCardOutline />
-                </div>
-                <div className="text-sm px-2">명함 설정</div>
-              </a>
+              {loginUserRole === 'mentor' && (
+                <a
+                  className="flex my-4 items-center"
+                  href="/mypage/card-settings"
+                >
+                  <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
+                    <IoIdCardOutline />
+                  </div>
+                  <div className="text-sm px-2">명함 설정</div>
+                </a>
+              )}
               <a
                 className="flex my-4 items-center"
                 href="/mypage/account-settings"
@@ -75,6 +66,12 @@ export default function HeaderTab() {
                   <MdOutlineAccountBox />
                 </div>
                 <div className="text-sm px-2">계정 설정</div>
+              </a>
+              <a className="flex my-4 items-center" href="/mypage/mentorings">
+                <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
+                  <PiShoppingBagOpen />
+                </div>
+                <div className="text-sm px-2">멘토링 기록</div>
               </a>
             </div>
           )}

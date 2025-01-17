@@ -81,6 +81,9 @@
   .header-skeleton {
     @apply h-14 md:h-16 max-w-screen-lg w-full;
   }
+  .header-menu-skeleton {
+    @apply h-10 md:h-12 max-w-screen-lg w-full;
+  }
 }
 
 body {
