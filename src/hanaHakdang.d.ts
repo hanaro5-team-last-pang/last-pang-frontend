@@ -17,3 +17,12 @@ export type MenteeSignUpType = {
   userName: string;
   birthDate: string;
 };
+
+export type MentorSignUpType = {
+  identificationNumber: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  userName: string;
+  birthDate: string;
+};

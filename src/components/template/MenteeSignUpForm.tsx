@@ -2,7 +2,6 @@
 
 import { menteeSignUp } from '@/app/action';
 import Button from '@/components/atoms/Button';
-import Checkbox from '@/components/atoms/Checkbox';
 import IconBadge from '@/components/atoms/IconBadge';
 import Input from '@/components/atoms/Input';
 import { AiFillEye } from 'react-icons/ai';
@@ -12,7 +11,6 @@ import { useActionState, useState } from 'react';
 
 export default function MenteeSignUpForm() {
   const [hide, setHide] = useState(false);
-  const [agreeCondition, setAgreeCondition] = useState(false);
   const [state, formAction] = useActionState(menteeSignUp, {
     value: {
       email: '',
@@ -21,7 +19,7 @@ export default function MenteeSignUpForm() {
       birthDate: '',
       userName: '',
     },
-    message: '회원가입 이전',
+    message: '멘티 회원가입 이전',
     isError: false,
   });
 
@@ -34,18 +32,28 @@ export default function MenteeSignUpForm() {
   };
 
   return (
-    <form className="my-4 grid grid-cols-1 gap-4" action={formAction}>
+    <form
+      className="my-4 grid grid-cols-1 gap-3 h-[375px] overflow-y-auto scrollbar-hide"
+      action={formAction}
+    >
+      <Input
+        name="userName"
+        label="이름"
+        placeholder="이름을 입력해주세요."
+        defaultValue={state.value.userName}
+        className="my-2 text-gray-400"
+      />
       <Input
         name="email"
         label="이메일"
         placeholder="이메일 주소를 입력하세요."
         defaultValue={state.value.email}
-        className="my-2 text-gray-400 bg-white"
+        className="my-2 text-gray-400 bg-white h-[42px]"
       >
         <Button
           type="button"
           text="인증"
-          className="bg-ourGreen text-xs px-4 py-2 rounded-xl whitespace-nowrap"
+          className="bg-ourGreen text-xs px-4 py-2 rounded-xl whitespace-nowrap text-white"
         />
       </Input>
       <Input
@@ -69,13 +77,6 @@ export default function MenteeSignUpForm() {
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
       <Input
-        name="userName"
-        label="이름"
-        placeholder="이름을 입력해주세요."
-        defaultValue={state.value.userName}
-        className="my-2 text-gray-400"
-      />
-      <Input
         name="birthDate"
         label="생년월일"
         placeholder=""
@@ -83,19 +84,12 @@ export default function MenteeSignUpForm() {
         type="date"
         className="my-2 text-gray-400"
       />
-      <Checkbox
-        checked={agreeCondition}
-        setChecked={setAgreeCondition}
-        text="약관에 동의하시겠습니까?"
-        className="data-[checked]:bg-gray-400"
-        textClassName="text-xs text-gray-500"
-      />
       <Button
         type="submit"
         text="회원가입"
         className="w-full h-full bg-hanaGreen80 mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
       />
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 my-2">
         <div className="text-xs text-gray-600">
           이미 하나학당의 회원이신가요?
         </div>

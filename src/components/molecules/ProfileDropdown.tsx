@@ -5,6 +5,7 @@ import Button from '@/components/atoms/Button';
 import Dropdown from '@/components/atoms/Dropdown';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { PiShoppingBagOpen, PiUser, PiArrowSquareOut } from 'react-icons/pi';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProfileDropdownProps {
@@ -19,11 +20,14 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
   const menuItems = [
     <div>
       <div className="flex items-center mr-10 mb-1">
-        <img
-          className="rounded-full"
-          src={userInfo.userImage}
-          alt="Profile Image"
-        />
+        <div className="relative w-4 h-4">
+          <Image
+            className="rounded-full object-contain"
+            src={userInfo.userImage}
+            alt="Profile Image"
+            fill
+          />
+        </div>
         <div className="mx-1 text-xs font-bold">{userInfo.username}</div>
         <HiOutlineUserCircle />
         <div className="text-[9px] mx-1">{userInfo.userAge}세</div>
