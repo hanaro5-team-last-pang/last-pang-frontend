@@ -13,6 +13,7 @@ interface ProfileDropdownProps {
     username: string;
     userAge: number;
     userImage: string;
+    userRole: string;
   };
 }
 
@@ -40,7 +41,14 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
       </div>
       <div className="text-xs px-2">새 강의 만들기</div>
     </Link>,
-    <Link className="flex my-2 items-center" href="/mypage">
+    <Link
+      className="flex my-2 items-center"
+      href={
+        userInfo.userRole === 'mentor'
+          ? '/mypage/card-settings'
+          : '/mypage/account-settings'
+      }
+    >
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiUser />
       </div>

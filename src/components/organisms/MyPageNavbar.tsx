@@ -1,7 +1,6 @@
 'use client';
 
 import clsx from 'clsx';
-import { BsPersonWorkspace } from 'react-icons/bs';
 import { IoIdCardOutline } from 'react-icons/io5';
 import { MdOutlineAccountBox } from 'react-icons/md';
 import { PiShoppingBagOpen } from 'react-icons/pi';
@@ -9,56 +8,50 @@ import { usePathname } from 'next/navigation';
 
 export default function MyPageNavbar() {
   const currentLocation = usePathname();
+  const loginUserRole = 'mentor';
 
   return (
-    <div className="rounded-lg scrollbar-hide">
+    <div className="wrapper scrollbar-hide">
+      {loginUserRole === 'mentor' && (
+        <a
+          className={clsx(
+            'flex my-4 items-center rounded-lg p-2',
+            currentLocation === '/mypage/card-settings' &&
+              'bg-ourLightGreen shadow-lg'
+          )}
+          href="/mypage/card-settings"
+        >
+          <div className="flex items-center justify-center rounded-lg p-2 bg-white">
+            <IoIdCardOutline />
+          </div>
+          <div className="text-sm px-2">명함 설정</div>
+        </a>
+      )}
       <a
         className={clsx(
-          'flex my-4 items-center',
-          currentLocation === '/' && 'bg-hanaGreen40'
-        )}
-        href="/mypage"
-      >
-        <div className="flex items-center justify-center rounded-lg p-2">
-          <BsPersonWorkspace />
-        </div>
-        <div className="text-sm px-2">나의 공간</div>
-      </a>
-      <a
-        className={clsx(
-          'flex my-4 items-center',
-          currentLocation === '/mypage/mentorings' && 'bg-hanaGreen40'
-        )}
-        href="/mypage/mentorings"
-      >
-        <div className="flex items-center justify-center rounded-lg p-2">
-          <PiShoppingBagOpen />
-        </div>
-        <div className="text-sm px-2">멘토링 기록</div>
-      </a>
-      <a
-        className={clsx(
-          'flex my-4 items-center',
-          currentLocation === '/mypage/card-settings' && 'bg-hanaGreen40'
-        )}
-        href="/mypage/card-settings"
-      >
-        <div className="flex items-center justify-center rounded-lg p-2">
-          <IoIdCardOutline />
-        </div>
-        <div className="text-sm px-2">명함 설정</div>
-      </a>
-      <a
-        className={clsx(
-          'flex my-4 items-center',
-          currentLocation === '/mypage/account-settings' && 'bg-hanaGreen40'
+          'flex my-4 items-center rounded-lg p-2',
+          currentLocation === '/mypage/account-settings' &&
+            'bg-ourLightGreen shadow-lg'
         )}
         href="/mypage/account-settings"
       >
-        <div className="flex items-center justify-center rounded-lg p-2">
+        <div className="flex items-center justify-center rounded-lg p-2 bg-white">
           <MdOutlineAccountBox />
         </div>
         <div className="text-sm px-2">계정 설정</div>
+      </a>
+      <a
+        className={clsx(
+          'flex my-4 items-center rounded-lg p-2',
+          currentLocation === '/mypage/mentorings' &&
+            'bg-ourLightGreen shadow-lg'
+        )}
+        href="/mypage/mentorings"
+      >
+        <div className="flex items-center justify-center rounded-lg p-2 bg-white">
+          <PiShoppingBagOpen />
+        </div>
+        <div className="text-sm px-2">멘토링 기록</div>
       </a>
     </div>
   );

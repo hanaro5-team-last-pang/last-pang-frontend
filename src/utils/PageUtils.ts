@@ -13,6 +13,8 @@ export class PageUtils {
         return '홈 > 마이 페이지 > 명함 설정';
       case '/mypage/account-settings':
         return '홈 > 마이 페이지 > 계정 설정';
+      default:
+        return '';
     }
   }
 }
