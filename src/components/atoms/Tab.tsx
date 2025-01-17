@@ -32,10 +32,10 @@ export default function Tab({
         <div className="flex items-center">
           {tabList.map((item, index) => {
             return (
-              <div key={index} className={clsx('py-4', item.tabListClassName)}>
+              <div key={index} className={clsx('py-2', item.tabListClassName)}>
                 <HeadlessTab
                   key={index}
-                  className="mx-2 font-semibold text-xs"
+                  className="mx-2 font-semibold text-sm"
                   onClick={item.tabOnClickEvent}
                 >
                   {item.tabTitle}

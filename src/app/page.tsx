@@ -6,7 +6,7 @@ import Header from '@/components/organisms/Header';
 export default function Home() {
   return (
     <>
-      <Header loginStatus={true}>
+      <Header loginStatus={false}>
         <HeaderTab />
       </Header>
       <div className="header-skeleton"></div>
