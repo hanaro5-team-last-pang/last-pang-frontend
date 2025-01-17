@@ -67,6 +67,9 @@ export default {
       width: {
         420: '420px',
       },
+      spacing: {
+        '1/5': '20%',
+      },
       fontFamily: {
         fontBold: ['FontBold', 'sans-serif'],
         fontCm: ['FontCM', 'sans-serif'],

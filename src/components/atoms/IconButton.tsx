@@ -19,7 +19,8 @@ export default function IconButton({
   return (
     <Link href={route}>
       <div
-        className={`flex flex-col items-center justify-center ${className} pb-[100%] border-gray-200 border-[0.5px] shadow-md transition-transform duration-300 ease-in-out transform hover:-translate-y-2 cursor-pointer`} // 1:1 비율 설정 및 애니메이션 추가
+        className={`flex flex-col items-center justify-center ${className} pb-[100%] rounded-xl border-gray-200 border-[0.5px] 
+        shadow-md transition-transform duration-300 ease-in-out transform hover:-translate-y-2 cursor-pointer`}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="text-2xl mb-3 text-ourOrange">{icon}</div>

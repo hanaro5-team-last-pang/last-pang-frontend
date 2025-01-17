@@ -15,6 +15,7 @@ interface CardViewProps {
   participants?: number;
   max_participants?: number;
   category?: string;
+  badgeClassName?: string;
   //금융뉴스카드의 prop
   date?: string;
   description?: string;
@@ -30,23 +31,29 @@ export default function CardView({
   participants,
   max_participants,
   category,
+  badgeClassName,
   date,
   description,
   route,
 }: CardViewProps) {
   return (
-    <Link href={route} className={'cursor-pointer'}>
-      <div className="flex flex-col w-1/2 border rounded-2xl shadow-md overflow-hidden aspect-[3/4]">
-        <div className="relative h-3/5 text-white flex items-center justify-center">
+    <Link href={route}>
+      <div
+        className="flex flex-col rounded-2xl overflow-hidden border-gray-200 border-[0.5px] shadow-md
+      transition-transform duration-300 ease-in-out transform hover:-translate-y-3 hover:shadow-lg cursor-pointer"
+      >
+        <div className="relative text-white flex items-center justify-center">
           <div>
             {category && (
               <Badge
                 text={category}
-                className="rounded-lg absolute top-3 left-3 z-10 bg-red-500"
+                className={`rounded-lg absolute top-3 left-3 z-10 ${badgeClassName}`}
               />
             )}
           </div>
-          <Image src={imageSrc} alt={''} fill />
+          <div className="relative w-full h-48">
+            <Image src={imageSrc} alt={''} fill />
+          </div>
         </div>
         <div className="flex-1 p-4">
           <div className="text-xl font-bold mb-1">{title}</div>
