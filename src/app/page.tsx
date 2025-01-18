@@ -36,7 +36,7 @@ export default function Home() {
             />
             {/* 아이콘 버튼 배치 */}
             <div className="grid grid-cols-5 gap-5 mt-4">
-              {iconButtonData.map((data, index) => (
+              {iconButtonData.slice(0, 5).map((data, index) => (
                 <IconButton
                   key={index}
                   icon={data.icon}
@@ -54,9 +54,13 @@ export default function Home() {
               buttonRoute="/mentorings"
             />
             {/* 카드 뷰 배치 */}
-            <div className="grid grid-cols-3 gap-6 gap-y-8 mt-4">
-              {cardData.map((card, index) => (
-                <CardView key={index} {...card} />
+            <div className="grid grid-rows-2 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-8 mt-4">
+              {cardData.slice(0, 6).map((card) => (
+                <CardView
+                  key={card.id}
+                  {...card}
+                  id={`mentorings/${card.id}`}
+                />
               ))}
             </div>
           </div>
@@ -79,9 +83,9 @@ export default function Home() {
               description="최신 금융 이슈에 대해 알아보세요"
               buttonRoute="/news"
             />
-            <div className="grid grid-cols-3 gap-6 mt-4">
-              {newsData.map((card, index) => (
-                <CardView key={index} {...card} />
+            <div className="grid grid-rows-1 sm:grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+              {newsData.slice(0, 3).map((card) => (
+                <CardView key={card.id} {...card} id={`news/${card.id}`} />
               ))}
             </div>
           </div>

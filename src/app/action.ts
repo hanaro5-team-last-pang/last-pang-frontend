@@ -48,3 +48,9 @@ export async function mentorSignUp(
     isError: false,
   };
 }
+
+//검색 서버액션 예시
+export async function handleSearchAction(formData: FormData) {
+  const searchTerm = formData.get('search')?.toString() || '';
+  console.log('Searching for:', searchTerm);
+}
