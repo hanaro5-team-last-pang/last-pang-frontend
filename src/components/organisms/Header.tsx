@@ -21,7 +21,7 @@ export default function Header({ children }: Props) {
   };
 
   return (
-    <div className="w-screen fixed bg-inherit">
+    <div className="w-screen fixed bg-inherit z-50">
       <div>
         <div className="wrapper header-skeleton flex justify-between items-center mx-auto">
           <div>
