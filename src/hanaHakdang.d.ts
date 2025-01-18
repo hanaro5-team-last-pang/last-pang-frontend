@@ -27,6 +27,23 @@ export type MentorSignUpType = {
   birthDate: string;
 };
 
+export type ChatResponseType = {
+  readonly username: string;
+  readonly body: string;
+  readonly timestamp: Date;
+};
+
+export type ChatRequestType = {
+  username: string;
+  lectureId: number;
+  body: string;
+};
+
+export type ReducerAction<T> = {
+  type: string;
+  data: T;
+};
+
 export type ChangeProfileFormType = {
   newImage: File | null;
   newUserName: string;
