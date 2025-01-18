@@ -1,8 +1,10 @@
+'use client';
+
 import Checkbox from '@/components/atoms/Checkbox';
 import { useState } from 'react';
 
 interface CheckboxItem {
-  id: string;
+  id: number;
   label: string;
 }
 
@@ -12,11 +14,11 @@ interface CheckboxListProps {
 
 export default function CheckboxList({ items }: CheckboxListProps) {
   // 각 체크박스의 상태를 관리하는 useState 훅
-  const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>(
+  const [checkedItems, setCheckedItems] = useState<{ [key: number]: boolean }>(
     items.reduce((acc, item) => ({ ...acc, [item.id]: false }), {})
   );
 
-  const handleCheckboxChange = (id: string) => {
+  const handleCheckboxChange = (id: number) => {
     setCheckedItems((prev) => ({
       ...prev,
       [id]: !prev[id], // 체크 상태
@@ -32,6 +34,7 @@ export default function CheckboxList({ items }: CheckboxListProps) {
             setChecked={() => handleCheckboxChange(item.id)}
             text={item.label}
             className="data-[checked]:bg-ourGreen"
+            textClassName="text-xs"
           />
         </div>
       ))}

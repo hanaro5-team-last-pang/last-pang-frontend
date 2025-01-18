@@ -6,6 +6,7 @@ import { IoPerson } from 'react-icons/io5';
 import Image from 'next/image';
 
 interface MentoringListProps {
+  id: string;
   title: string;
   mentor_name: string;
   start_time: string;
@@ -13,11 +14,12 @@ interface MentoringListProps {
   participants: number;
   max_participants: number;
   category: string;
+  badgeClassName?: string;
   imageSrc: string;
-  route: string;
 }
 
 export default function MentoringList({
+  id,
   title,
   mentor_name,
   start_time,
@@ -25,8 +27,8 @@ export default function MentoringList({
   participants,
   max_participants,
   category,
+  badgeClassName,
   imageSrc,
-  route,
 }: MentoringListProps) {
   return (
     <div className="flex border rounded-2xl shadow-md overflow-hidden h-52">
@@ -34,7 +36,7 @@ export default function MentoringList({
         <div>
           <Badge
             text={category}
-            className="rounded-lg absolute top-3 left-2 z-10 bg-red-500"
+            className={`rounded-lg absolute top-3 left-2 z-10 ${badgeClassName}`}
           />
         </div>
         <Image src={imageSrc} alt={''} fill />
@@ -47,25 +49,25 @@ export default function MentoringList({
             icon={<FaRegCalendar className="text-ourGreen text-lg font-bold" />}
             text={start_time}
             gapLength="2"
-            textClassName="mr-3 text-gray-700"
+            textClassName="mr-3 text-sm text-gray-700"
           />
           <IconBadge
             icon={<FaRegClock className="text-ourGreen text-lg font-bold" />}
             text={`${duration}시간`}
             gapLength="2"
-            textClassName="mr-3 text-gray-700"
+            textClassName="mr-3 text-sm text-gray-700"
           />
           <IconBadge
             icon={<IoPerson className="text-ourGreen text-lg font-bold" />}
             text={`${participants}/${max_participants}`}
             gapLength="2"
-            textClassName="mr-3 text-gray-700"
+            textClassName="mr-3 text-sm text-gray-700"
           />
         </div>
         <div className="flex justify-end">
           <LinkButton
             label="자세히 보기"
-            route={route}
+            route={id}
             className="mt-1 font-bold hover:text-ourGreen"
           />
         </div>

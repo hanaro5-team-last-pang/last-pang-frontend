@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface CardViewProps {
+  id: string;
   title: string;
   imageSrc: string;
   //멘토링 목록의 prop
@@ -19,10 +20,10 @@ interface CardViewProps {
   //금융뉴스카드의 prop
   date?: string;
   description?: string;
-  route: string;
 }
 
 export default function CardView({
+  id,
   title,
   imageSrc,
   mentor_name,
@@ -34,10 +35,9 @@ export default function CardView({
   badgeClassName,
   date,
   description,
-  route,
 }: CardViewProps) {
   return (
-    <Link href={route}>
+    <Link href={id}>
       <div
         className="flex flex-col rounded-2xl overflow-hidden border-gray-200 border-[0.5px] shadow-md
       transition-transform duration-300 ease-in-out transform hover:-translate-y-3 hover:shadow-lg cursor-pointer"
@@ -69,7 +69,7 @@ export default function CardView({
                 }
                 text={date}
                 gapLength="2"
-                textClassName="text-gray-700"
+                textClassName="text-gray-700 text-sm"
               />
             </div>
           )}
@@ -84,7 +84,7 @@ export default function CardView({
                 }
                 text={start_time}
                 gapLength="2"
-                textClassName="text-gray-700 mr-3"
+                textClassName="text-gray-700 mr-3 text-sm"
               />
               {duration !== undefined && (
                 <IconBadge
@@ -93,7 +93,7 @@ export default function CardView({
                   }
                   text={`${duration}시간`}
                   gapLength="2"
-                  textClassName="text-gray-700 mr-3"
+                  textClassName="text-gray-700 mr-3 text-sm"
                 />
               )}
               {participants !== undefined && max_participants !== undefined && (
@@ -103,7 +103,7 @@ export default function CardView({
                   }
                   text={`${participants}/${max_participants}`}
                   gapLength="2"
-                  textClassName="text-gray-700 mr-3"
+                  textClassName="text-gray-700 mr-3 text-sm"
                 />
               )}
             </div>

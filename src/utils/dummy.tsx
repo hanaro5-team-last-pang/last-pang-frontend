@@ -42,6 +42,7 @@ export const iconButtonData = [
 
 export const cardData = [
   {
+    id: '1',
     title: '멘토링 프로그램 1',
     imageSrc: '/img_landing.png',
     mentor_name: '멘토 1',
@@ -50,9 +51,10 @@ export const cardData = [
     participants: 5,
     max_participants: 10,
     category: '디지털 교육',
-    route: '/mentoring1',
+    badgeClassName: 'bg-green-400',
   },
   {
+    id: '2',
     title: '멘토링 프로그램 2',
     imageSrc: '/img_landing.png',
     mentor_name: '멘토 2',
@@ -61,9 +63,10 @@ export const cardData = [
     participants: 2,
     max_participants: 8,
     category: '은퇴 설계',
-    route: '/mentoring2',
+    badgeClassName: 'bg-yellow-400',
   },
   {
+    id: '3',
     title: '멘토링 프로그램 3',
     imageSrc: '/img_landing.png',
     mentor_name: '멘토 3',
@@ -72,10 +75,10 @@ export const cardData = [
     participants: 4,
     max_participants: 6,
     category: '주식 투자',
-    badgeClassName: 'bg-blue-300',
-    route: '/mentoring3',
+    badgeClassName: 'bg-blue-400',
   },
   {
+    id: '4',
     title: '멘토링 프로그램 4',
     imageSrc: '/img_landing.png',
     mentor_name: '멘토 4',
@@ -84,9 +87,10 @@ export const cardData = [
     participants: 3,
     max_participants: 10,
     category: '상속',
-    route: '/mentoring4',
+    badgeClassName: 'bg-red-400',
   },
   {
+    id: '5',
     title: '멘토링 프로그램 5',
     imageSrc: '/img_landing.png',
     mentor_name: '멘토 5',
@@ -95,9 +99,10 @@ export const cardData = [
     participants: 1,
     max_participants: 5,
     category: '멘토링',
-    route: '/mentoring5',
+    badgeClassName: 'bg-purple-400',
   },
   {
+    id: '6',
     title: '멘토링 프로그램 6',
     imageSrc: '/img_landing.png',
     mentor_name: '멘토 6',
@@ -106,30 +111,68 @@ export const cardData = [
     participants: 2,
     max_participants: 8,
     category: '기타',
-    route: '/mentoring6',
+    badgeClassName: 'bg-pink-400',
   },
 ];
 
 export const newsData = [
   {
+    id: '1',
     title: '뉴스 1',
     description: '1번 설명입니다.',
     imageSrc: '/img_landing.png',
     date: '2023-01-20',
-    route: '/mentoring1',
   },
   {
+    id: '2',
     title: '뉴스 2',
     description: '2번 설명입니다.',
     imageSrc: '/img_landing.png',
     date: '2023-01-20',
-    route: '/mentoring1',
   },
   {
+    id: '3',
     title: '뉴스 3',
     description: '3번 설명입니다.',
     imageSrc: '/img_landing.png',
     date: '2023-01-20',
-    route: '/mentoring1',
   },
+  {
+    id: '4',
+    title: '뉴스 4',
+    description: '4번 설명입니다.',
+    imageSrc: '/img_landing.png',
+    date: '2023-01-20',
+  },
+  {
+    id: '5',
+    title: '뉴스 5',
+    description: '5번 설명입니다.',
+    imageSrc: '/img_landing.png',
+    date: '2023-01-20',
+  },
+  {
+    id: '6',
+    title: '뉴스 6',
+    description: '6번 설명입니다.',
+    imageSrc: '/img_landing.png',
+    date: '2023-01-20',
+  },
+];
+
+export const category = [
+  { id: 1, label: 'All' },
+  { id: 2, label: '금융' },
+  { id: 3, label: '경제' },
+  { id: 4, label: '상속' },
+  { id: 5, label: '주식 투자' },
+  { id: 6, label: '디지털 교육' },
+];
+
+export const age_category = [
+  { id: 1, label: 'All' },
+  { id: 2, label: '1020' },
+  { id: 3, label: '3040' },
+  { id: 4, label: '5060' },
+  { id: 5, label: '7080' },
 ];
