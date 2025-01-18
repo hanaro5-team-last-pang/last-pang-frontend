@@ -18,6 +18,7 @@ export default function Home() {
       <Header>
         <HeaderTab />
       </Header>
+      <div className="header-skeleton" />
       <div>
         <div className="relative w-full">
           <Image src={landing} alt="랜딩이미지" layout="responsive" />
