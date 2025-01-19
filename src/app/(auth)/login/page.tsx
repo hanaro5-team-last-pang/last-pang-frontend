@@ -43,6 +43,7 @@ export default function Page() {
             placeholder="이메일 주소를 입력하세요."
             defaultValue={state.value.email}
             className="my-2 text-gray-400"
+            labelClassName="font-bold"
           />
           <Input
             name="password"
@@ -51,6 +52,7 @@ export default function Page() {
             defaultValue={state.value.password}
             type={hide ? 'text' : 'password'}
             className="my-2 text-gray-400"
+            labelClassName="font-bold"
           >
             <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
           </Input>
