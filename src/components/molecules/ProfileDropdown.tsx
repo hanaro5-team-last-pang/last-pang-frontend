@@ -78,7 +78,7 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
       menuItems={menuItems}
       anchor={'bottom start'}
       menuItemsClassName={
-        'bg-white my-2 rounded-lg scrollbar-hide border border-gray-200 p-2 shadow-lg'
+        'bg-white my-2 rounded-lg scrollbar-hide border border-gray-200 p-2 shadow-lg z-30'
       }
     />
   );

@@ -62,7 +62,7 @@ export default function AlarmDropdown({
       menuButton={<CiBellOn size={24} />}
       menuItems={menuItems}
       anchor="bottom end"
-      menuItemsClassName="bg-white rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2"
+      menuItemsClassName="bg-white rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2 z-30"
     />
   );
 }
