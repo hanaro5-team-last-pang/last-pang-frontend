@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <div className="hidden lg:block">
           <MyPageNavbar />
         </div>
-        <div className="mt-4">{children}</div>
+        <div className="my-4">{children}</div>
       </div>
     </>
   );

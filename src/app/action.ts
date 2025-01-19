@@ -2,6 +2,7 @@
 
 import {
   ActionResType,
+  ChangeProfileFormType,
   LoginType,
   MenteeSignUpType,
   MentorSignUpType,
@@ -53,4 +54,18 @@ export async function mentorSignUp(
 export async function handleSearchAction(formData: FormData) {
   const searchTerm = formData.get('search')?.toString() || '';
   console.log('Searching for:', searchTerm);
+}
+
+export async function changeProfileForm(
+  prevState: ActionResType<ChangeProfileFormType, string>,
+  formData: FormData
+): Promise<ActionResType<ChangeProfileFormType, string>> {
+  const value = Object.fromEntries(formData) as ChangeProfileFormType;
+  const message = '프로필 폼 데이터 변경 액션';
+
+  return {
+    value: value,
+    message: message,
+    isError: false,
+  };
 }
