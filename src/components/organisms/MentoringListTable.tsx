@@ -12,15 +12,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
-interface MentoringListTableProps {
-  height: string;
-  width: string;
-}
-
-export default function MentoringListTable({
-  width,
-  height,
-}: MentoringListTableProps) {
+export default function MentoringListTable() {
   const router = useRouter();
   ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
@@ -30,7 +22,6 @@ export default function MentoringListTable({
       mentoringName: '양지은의 주식 투자 성공기',
       mentoringDate: '2025년 1월 10일',
       mentorName: '양지은',
-      credit: '1000전',
       status: '멘토링 예약',
     },
     {
@@ -38,7 +29,6 @@ export default function MentoringListTable({
       mentoringName: '정중일의 주식 투자 성공기',
       mentoringDate: '2025년 1월 16일',
       mentorName: '정중일',
-      credit: '1500전',
       status: '멘토링 완료',
     },
   ];
@@ -47,13 +37,26 @@ export default function MentoringListTable({
     {
       field: 'mentoringName',
       headerName: '멘토링명',
+      width: 250, // 기본 너비 설정 (px 단위)
+      minWidth: 210,
     },
-    { field: 'mentoringDate', headerName: '날짜' },
-    { field: 'mentorName', headerName: '강사명' },
-    { field: 'credit', headerName: '사용 크레딧' },
+    {
+      field: 'mentoringDate',
+      headerName: '날짜',
+      width: 180, // 기본 너비 설정
+      minWidth: 140,
+    },
+    {
+      field: 'mentorName',
+      headerName: '강사명',
+      width: 100,
+      minWidth: 70, // 최소 너비 설정
+    },
     {
       field: 'status',
       headerName: '상태',
+      width: 140,
+      minWidth: 110,
       cellRenderer: MentoringListTableStatus,
     },
   ];
@@ -67,14 +70,14 @@ export default function MentoringListTable({
   );
 
   return (
-    <div className="flex justify-center">
-      <div className={`h-${height} w-${width}`}>
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={colDefs}
-          onRowClicked={handleRowClick}
-        />
-      </div>
+    <div
+      className={`min-h-[135px] max-h-[500px] w-full overflow-y-auto scrollbar-hide`}
+    >
+      <AgGridReact
+        rowData={rowData}
+        columnDefs={colDefs}
+        onRowClicked={handleRowClick}
+      />
     </div>
   );
 }
