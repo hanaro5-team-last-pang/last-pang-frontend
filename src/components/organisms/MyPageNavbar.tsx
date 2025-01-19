@@ -24,7 +24,7 @@ export default function MyPageNavbar() {
           <div className="flex items-center justify-center rounded-lg p-2 bg-white">
             <IoIdCardOutline />
           </div>
-          <div className="text-sm px-2">명함 설정</div>
+          <div className="px-2">명함 설정</div>
         </a>
       )}
       <a
@@ -38,7 +38,7 @@ export default function MyPageNavbar() {
         <div className="flex items-center justify-center rounded-lg p-2 bg-white">
           <MdOutlineAccountBox />
         </div>
-        <div className="text-sm px-2">계정 설정</div>
+        <div className="px-2">계정 설정</div>
       </a>
       <a
         className={clsx(
@@ -51,7 +51,7 @@ export default function MyPageNavbar() {
         <div className="flex items-center justify-center rounded-lg p-2 bg-white">
           <PiShoppingBagOpen />
         </div>
-        <div className="text-sm px-2">멘토링 기록</div>
+        <div className="px-2">멘토링 기록</div>
       </a>
     </div>
   );

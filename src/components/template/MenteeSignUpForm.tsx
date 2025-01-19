@@ -42,6 +42,7 @@ export default function MenteeSignUpForm() {
         placeholder="이름을 입력해주세요."
         defaultValue={state.value.userName}
         className="my-2 text-gray-400"
+        labelClassName="font-bold"
       />
       <Input
         name="email"
@@ -49,6 +50,7 @@ export default function MenteeSignUpForm() {
         placeholder="이메일 주소를 입력하세요."
         defaultValue={state.value.email}
         className="my-2 text-gray-400 bg-white h-[42px]"
+        labelClassName="font-bold"
       >
         <Button
           type="button"
@@ -63,6 +65,7 @@ export default function MenteeSignUpForm() {
         defaultValue={state.value.password}
         type={hide ? 'text' : 'password'}
         className="my-2 text-gray-400 bg-white"
+        labelClassName="font-bold"
       >
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
@@ -73,6 +76,7 @@ export default function MenteeSignUpForm() {
         defaultValue={state.value.confirmPassword}
         type={hide ? 'text' : 'password'}
         className="my-2 text-gray-400 bg-white"
+        labelClassName="font-bold"
       >
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
@@ -83,17 +87,18 @@ export default function MenteeSignUpForm() {
         defaultValue={state.value.birthDate}
         type="date"
         className="my-2 text-gray-400"
+        labelClassName="font-bold"
       />
       <Button
         type="submit"
         text="회원가입"
-        className="w-full h-full bg-hanaGreen80 mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
+        className="w-full h-full bg-hanaGreen80 mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white font-bold"
       />
       <div className="flex justify-center gap-2 my-2">
         <div className="text-xs text-gray-600">
           이미 하나학당의 회원이신가요?
         </div>
-        <Link href="/signup">
+        <Link href="/login">
           <IconBadge
             reverse={true}
             icon={<MdArrowOutward />}

@@ -43,6 +43,7 @@ export default function MentorSignUpForm() {
         placeholder="사원번호를 입력해주세요."
         defaultValue={state.value.identificationNumber}
         className="my-2 text-gray-400"
+        labelClassName="font-bold"
       />
       <Input
         name="userName"
@@ -50,6 +51,7 @@ export default function MentorSignUpForm() {
         placeholder="이름을 입력해주세요."
         defaultValue={state.value.userName}
         className="my-2 text-gray-400"
+        labelClassName="font-bold"
       />
       <Input
         name="email"
@@ -57,6 +59,7 @@ export default function MentorSignUpForm() {
         placeholder="이메일 주소를 입력하세요."
         defaultValue={state.value.email}
         className="my-2 text-gray-400 bg-white h-[42px]"
+        labelClassName="font-bold"
       >
         <Button
           type="button"
@@ -71,6 +74,7 @@ export default function MentorSignUpForm() {
         defaultValue={state.value.password}
         type={hide ? 'text' : 'password'}
         className="my-2 text-gray-400 bg-white"
+        labelClassName="font-bold"
       >
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
@@ -81,6 +85,7 @@ export default function MentorSignUpForm() {
         defaultValue={state.value.confirmPassword}
         type={hide ? 'text' : 'password'}
         className="my-2 text-gray-400 bg-white"
+        labelClassName="font-bold"
       >
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
@@ -91,6 +96,7 @@ export default function MentorSignUpForm() {
         defaultValue={state.value.birthDate}
         type="date"
         className="my-2 text-gray-400"
+        labelClassName="font-bold"
       />
       <Button
         type="submit"
@@ -101,7 +107,7 @@ export default function MentorSignUpForm() {
         <div className="text-xs text-gray-600">
           이미 하나학당의 회원이신가요?
         </div>
-        <Link href="/signup">
+        <Link href="/login">
           <IconBadge
             reverse={true}
             icon={<MdArrowOutward />}
