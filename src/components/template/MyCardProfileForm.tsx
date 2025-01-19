@@ -5,10 +5,20 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 interface ProfileImageProps {
+  modifyMode: boolean;
   userImage: string;
+  showNewImage: string;
+  setShowNewImage: (showNewImage: string) => void;
+  setNewImage: (newImage: File) => void;
 }
 
-export default function MyCardProfileForm({ userImage }: ProfileImageProps) {
+export default function MyCardProfileForm({
+  modifyMode,
+  userImage,
+  showNewImage,
+  setShowNewImage,
+  setNewImage,
+}: ProfileImageProps) {
   const [profileFormData, setProfileFormData] = useState([
     { key: '나이', value: '25' },
   ]);
@@ -37,16 +47,48 @@ export default function MyCardProfileForm({ userImage }: ProfileImageProps) {
     setFormAddMode(false);
   };
 
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setShowNewImage(reader.result as string);
+        setNewImage(file);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div>
-      <div className="relative w-64 h-64 my-4">
-        <Image
-          className="rounded-full object-contain"
-          src={userImage}
-          alt="Profile Image"
-          fill
-        />
-      </div>
+      {!modifyMode ? (
+        <div className="relative w-64 h-64 my-4">
+          <Image
+            className="rounded-full object-cover"
+            src={showNewImage || userImage}
+            alt="Profile Image"
+            fill
+          />
+        </div>
+      ) : (
+        <div className="relative w-64 h-64 my-4">
+          <label htmlFor="profile-image-upload" className="cursor-pointer">
+            <Image
+              className="rounded-full object-cover"
+              src={showNewImage || userImage}
+              alt="Profile Image"
+              fill
+            />
+          </label>
+          <input
+            id="profile-image-upload"
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleImageChange}
+          />
+        </div>
+      )}
       {formAddMode ? (
         <div>
           {profileFormData.map((items, index) => {
