@@ -26,3 +26,12 @@ export type MentorSignUpType = {
   userName: string;
   birthDate: string;
 };
+
+export type ChangeProfileFormType = {
+  newImage: File | null;
+  newUserName: string;
+  newBirthDate: string;
+  currentPassword: string;
+  newPassword: string;
+  newConfirmedPassword: string;
+};
