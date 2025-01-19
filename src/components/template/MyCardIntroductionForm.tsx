@@ -22,7 +22,7 @@ export default function MyCardIntroductionForm({
         />
       ) : (
         <textarea
-          className="text-md bg-inherit text-gray-400 my-3 w-full"
+          className="text-md bg-inherit text-gray-400 px-2 my-3 w-full outline outline-2 outline-blue-400 focus:outline-blue-400 focus:outline-2"
           value={newIntroduction}
           onChange={(e) => setNewIntroduction(e.target.value)}
         />
