@@ -35,6 +35,7 @@ export default function ChatComponent({ classroomId }: Props) {
     if (!inputRef.current || !inputRef.current.value) return;
     const chatBody = inputRef.current.value;
     const chatRequest: ChatRequestType = {
+      userId: 1,
       username: 'magae1',
       body: chatBody,
       lectureId: 1,
@@ -74,6 +75,7 @@ export default function ChatComponent({ classroomId }: Props) {
           {chats.map((chat, i) => {
             return (
               <div key={i} className="bg-blue-300">
+                <p>사용자 ID: {chat.userId}</p>
                 <p>사용자명: {chat.username}</p>
                 <p>내용: {chat.body}</p>
               </div>

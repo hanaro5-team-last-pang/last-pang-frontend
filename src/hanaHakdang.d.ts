@@ -28,12 +28,14 @@ export type MentorSignUpType = {
 };
 
 export type ChatResponseType = {
+  readonly userId: number;
   readonly username: string;
   readonly body: string;
   readonly timestamp: Date;
 };
 
 export type ChatRequestType = {
+  userId: nunber;
   username: string;
   lectureId: number;
   body: string;
