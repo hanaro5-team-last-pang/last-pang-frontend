@@ -31,11 +31,11 @@ export type ChatResponseType = {
   readonly userId: number;
   readonly username: string;
   readonly body: string;
-  readonly timestamp: Date;
+  readonly timestamp: string;
 };
 
 export type ChatRequestType = {
-  userId: nunber;
+  userId: number;
   username: string;
   lectureId: number;
   body: string;

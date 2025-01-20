@@ -29,7 +29,13 @@ export default function Page() {
   };
 
   const handleSubmitNewData = () => {
-    if (newOneLineIntroduction && newIntroduction && newCareer && newImage) {
+    if (
+      newOneLineIntroduction ||
+      newIntroduction ||
+      newCareer ||
+      newImage ||
+      showNewImage
+    ) {
       setOneLineIntroduction(newOneLineIntroduction);
       setIntroduction(newIntroduction);
       setCareer(newCareer);

@@ -30,6 +30,7 @@ export default {
         ourGreen: '#0B9B97',
         ourLightGreen: '#C1EBE9',
         ourOrange: '#FF782D',
+        ourLightBlue: '#E6F0FC',
 
         /* hanaRed */
         hanaRed: '#CB1136',
@@ -70,6 +71,9 @@ export default {
       },
       spacing: {
         '1/5': '20%',
+      },
+      fontSize: {
+        '2xs': ['0.625rem', '0.75rem'],
       },
       fontFamily: {
         fontBold: ['FontBold', 'sans-serif'],

@@ -4,11 +4,19 @@ import useLocalVideo from '@/hooks/useLocalVideo';
 import useMediaDevices from '@/hooks/useMediaDevices';
 
 export default function VideoComponent() {
-  const { videoRef, changeDevice } = useLocalVideo();
+  const { videoRef, changeDevice, stream } = useLocalVideo();
   const { videoDevices, audioDevices } = useMediaDevices();
 
+  const toggleVideo = () => {
+    if (videoRef.current!.srcObject) {
+      videoRef.current!.srcObject = null;
+    } else {
+      videoRef.current!.srcObject = stream;
+    }
+  };
+
   return (
-    <div className="flex flex-col">
+    <div className="overflow-y-auto flex flex-col scrollbar-hide">
       <div>
         <video ref={videoRef} autoPlay />
       </div>
@@ -27,6 +35,7 @@ export default function VideoComponent() {
             );
           })}
         </div>
+        <button onClick={toggleVideo}>ㅎㅇㅎㅇㅎㅇ</button>
       </div>
       <div>
         <span>오디오</span>
