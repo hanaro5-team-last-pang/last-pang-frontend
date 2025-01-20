@@ -1,11 +1,30 @@
 import TabBody from '@/components/molecules/TabBody';
 import MentoringIntro from '@/components/organisms/MentoringIntro';
-import { tabList, tabPanelList } from '@/utils/dummy';
+import MentoringDescriptionForm from '@/components/template/MentoringDescriptionForm';
+import MentoringFAQForm from '@/components/template/MentoringFAQForm';
+import MentoringIntroduceForm from '@/components/template/MentoringIntroduceForm';
+import MentoringReviewForm from '@/components/template/MentoringReviewForm';
 
 type Params = Promise<{ id: string }>;
 
 export default async function Page(props: { params: Params }) {
   const { id } = await props.params;
+
+  // 메뉴 Title
+  const tabList = [
+    { tabTitle: '멘토링 소개' },
+    { tabTitle: '멘토 소개' },
+    { tabTitle: '강의 리뷰' },
+    { tabTitle: 'FAQs' },
+  ];
+
+  //각각 메뉴에 대한 body list
+  const tabPanelList = [
+    <MentoringDescriptionForm />,
+    <MentoringIntroduceForm />,
+    <MentoringReviewForm />,
+    <MentoringFAQForm />,
+  ];
 
   return (
     <>
@@ -22,13 +41,12 @@ export default async function Page(props: { params: Params }) {
           tagList={['하이', '방가']}
         />
       </div>
-      <div className="wrapper w-full items-start">
+      <div className="wrapper w-full items-start mb-10">
         <TabBody
           tabList={tabList}
           tabPanelList={tabPanelList}
           activeText={'text-ourOrange'}
         />
-        <div> {id}번 상세페이지 입니다. </div>
       </div>
     </>
   );
