@@ -31,7 +31,7 @@ export default function TabBody({
   };
 
   return (
-    <div className="p-6">
+    <div className="py-6">
       <Tab
         tabList={tabList.map((item, index) => ({
           ...item,
