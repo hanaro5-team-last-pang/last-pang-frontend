@@ -8,6 +8,9 @@ import {
 } from '@/context/StompConnectionContext';
 import { ChatRequestType, ChatResponseType } from '@/hanaHakdang';
 import { IMessage } from '@stomp/stompjs';
+import dayjs from 'dayjs';
+import { IoSend } from 'react-icons/io5';
+import { MdOutlineMessage } from 'react-icons/md';
 import {
   FormEvent,
   useCallback,
@@ -36,7 +39,7 @@ export default function ChatComponent({ classroomId }: Props) {
     const chatBody = inputRef.current.value;
     const chatRequest: ChatRequestType = {
       userId: 1,
-      username: 'magae1',
+      username: '정중일',
       body: chatBody,
       lectureId: 1,
     };
@@ -50,6 +53,15 @@ export default function ChatComponent({ classroomId }: Props) {
       setChats((prev) => [...prev, chatResponse]);
     });
   }, []);
+
+  const formatDate = (isoString: string) => {
+    const date = dayjs(isoString);
+    const hour =
+      date.hour() > 12 ? `오후 ${date.hour() - 12}` : `오전 ${date.hour()}`;
+    const minute = date.minute();
+
+    return `${hour}:${minute}`;
+  };
 
   useEffect(() => {
     console.log('connection:', isConnected);
@@ -69,26 +81,48 @@ export default function ChatComponent({ classroomId }: Props) {
   }, []);
 
   return (
-    <div>
-      <div>
-        <div className="flex flex-col gap-y-2 overflow-y-auto h-96">
-          {chats.map((chat, i) => {
-            return (
-              <div key={i} className="bg-blue-300">
-                <p>사용자 ID: {chat.userId}</p>
-                <p>사용자명: {chat.username}</p>
-                <p>내용: {chat.body}</p>
-              </div>
-            );
-          })}
+    <div className="bg-ourLightBlue rounded-lg drop-shadow-md h-full">
+      <div className="h-1/6 flex items-center">
+        <div className="px-4 w-full">
+          <div className="bg-hanaNavy rounded-md flex justify-center text-center text-white items-center py-2">
+            <MdOutlineMessage className="text-lg mx-2" />
+            채팅
+          </div>
         </div>
       </div>
-      <form onSubmit={onSubmitChat}>
-        <input ref={inputRef} name="chat" />
-        <button className="px-5 py-1" type="submit" ref={formButtonRef}>
-          전송!
-        </button>
-      </form>
+      <div className="flex px-4 flex-col gap-y-2 overflow-y-auto scrollbar-hide h-4/6">
+        {chats.map((chat, index) => {
+          return (
+            <div key={index}>
+              <p className="text-gray-500 my-2">{chat.username}</p>
+              <div className="inline-flex items-end bg-ourGreen text-white rounded-md p-2">
+                <p className="mr-2">{chat.body}</p>
+                <p className="text-2xs">{formatDate(chat.timestamp)}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="px-4 flex items-center justify-center h-1/6">
+        <form
+          onSubmit={onSubmitChat}
+          className="bg-ourGreen flex justify-center items-center w-full rounded-md py-2"
+        >
+          <div className="w-full px-2">
+            <input
+              ref={inputRef}
+              name="chat"
+              className="m-2 pl-1 bg-inherit text-white font placeholder-white w-full focus:outline-none"
+              placeholder="메시지를 입력하세요"
+            />
+          </div>
+          <div>
+            <button className="px-4 py-2 rounded-lg bg-white mx-2">
+              <IoSend />
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
