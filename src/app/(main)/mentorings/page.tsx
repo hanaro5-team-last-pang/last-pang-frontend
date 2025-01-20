@@ -32,11 +32,11 @@ export default function Page() {
         <div className="flex flex-col w-1/6">
           <div className="w-full">
             <div className="mb-8">
-              <div className="text-sm mb-3 font-semibold"> 멘토링 카테고리</div>
+              <div className="text-sm mb-3 font-semibold">멘토링 카테고리</div>
               <CheckboxList items={category} />
             </div>
             <div>
-              <div className="text-sm mb-3 font-semibold"> 연령 카테고리</div>
+              <div className="text-sm mb-3 font-semibold">연령 카테고리</div>
               <CheckboxList items={age_category} />
             </div>
           </div>
