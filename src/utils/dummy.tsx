@@ -176,3 +176,19 @@ export const age_category = [
   { id: 4, label: '5060' },
   { id: 5, label: '7080' },
 ];
+
+//메뉴명 리스트
+export const tabList = [
+  { tabTitle: '강의 설명' },
+  { tabTitle: '멘토 소개' },
+  { tabTitle: '강의 리뷰' },
+  { tabTitle: 'FAQs' },
+];
+
+// 각각 메뉴에 대한 body list
+export const tabPanelList = [
+  <div>강의에 대한 상세한 설명이 여기에 들어갑니다.</div>,
+  <div>멘토 소개 내용이 여기에 들어갑니다.</div>,
+  <div>강의 리뷰가 여기에 들어갑니다.</div>,
+  <div>자주 묻는 질문이 여기에 들어갑니다.</div>,
+];

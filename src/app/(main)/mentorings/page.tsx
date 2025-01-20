@@ -7,8 +7,8 @@ import { age_category, cardData, category } from '@/utils/dummy';
 export default function Page() {
   return (
     <>
-      <div className="flex w-full my-10 gap-10 items-start">
-        <div className="w-4/5">
+      <div className="wrapper flex w-full my-10 gap-10 items-start">
+        <div className="w-5/6">
           <div className="flex flex-col w-full">
             <div className="flex flex-row justify-between mb-6 w-full">
               <h1 className="text-2xl font-bold">전체 멘토링 강의</h1>
@@ -29,14 +29,14 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-1/5">
+        <div className="flex flex-col w-1/6">
           <div className="w-full">
             <div className="mb-8">
-              <div className="text-sm mb-3"> 멘토링 카테고리</div>
+              <div className="text-sm mb-3 font-semibold"> 멘토링 카테고리</div>
               <CheckboxList items={category} />
             </div>
             <div>
-              <div className="text-sm mb-3"> 연령 카테고리</div>
+              <div className="text-sm mb-3 font-semibold"> 연령 카테고리</div>
               <CheckboxList items={age_category} />
             </div>
           </div>
