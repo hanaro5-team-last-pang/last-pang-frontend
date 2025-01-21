@@ -38,7 +38,9 @@ export default function Tab({
                 onClick={item.tabOnClickEvent}
               >
                 {item.tabTitle}
-                <div className="absolute font-normal">{item.tabComponent}</div>
+                <div className="absolute font-normal mt-4">
+                  {item.tabComponent}
+                </div>
               </HeadlessTab>
             );
           })}

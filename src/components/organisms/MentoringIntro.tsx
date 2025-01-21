@@ -83,20 +83,20 @@ export default function MentoringIntro({
           </div>
           {/* 오른쪽 div */}
           <div className="flex flex-col items-center rounded-2xl bg-white border border-gray-400 overflow-hidden relative">
-            <div className="relative mb-2 w-[280px] h-[210px]">
+            <div className="relative w-[280px] h-[210px]">
               <Image
                 src={mentorImageUrl}
                 alt="멘토 명함"
                 layout="fill"
                 className="object-fit"
               />
-            </div>
-            <div className="w-full flex justify-end p-2">
-              <Button
-                type="submit"
-                text="수강 신청"
-                className="bg-ourOrange text-white rounded-full py-2 px-4 mr-3 mb-1 hover:bg-orange-600 transition"
-              />
+              <div className="absolute bottom-0 right-0 p-2">
+                <Button
+                  type="submit"
+                  text="수강 신청"
+                  className="bg-ourOrange text-white rounded-full py-2 px-4 mr-3 mb-1 hover:bg-orange-600 transition"
+                />
+              </div>
             </div>
           </div>
         </div>
