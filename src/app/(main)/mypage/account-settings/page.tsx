@@ -52,7 +52,7 @@ export default function Page() {
       className="flex flex-col justify-center items-center"
       action={formAction}
     >
-      <div className="font-bold mb-4">프로필 변경</div>
+      <div className="text-xl font-bold my-4">프로필 변경</div>
       <div className="relative w-64 h-64 my-4">
         <label htmlFor="profile-image-upload" className="cursor-pointer">
           <Image

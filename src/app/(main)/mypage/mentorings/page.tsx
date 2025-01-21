@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
-        <div className="text-ourGreen my-3 text-xl font-bold">
+        <div className="text-ourGreen m-2 text-2xl font-bold">
           최근 멘토링 기록
         </div>
         <LinkButton
@@ -14,7 +14,7 @@ export default function Page() {
           className="rounded-full bg-ourGreen text-sm text-white"
         />
       </div>
-      <div className="flex justify-center mb-10 px-2">
+      <div className="flex justify-center mt-3 mb-10 px-2">
         <MentoringListTable />
       </div>
     </div>
