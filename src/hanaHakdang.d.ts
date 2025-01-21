@@ -66,3 +66,15 @@ export type CardType = {
   cardDescription: string;
   cardImageUrl: string;
 };
+
+export type openMentoringFormType = {
+  classTitle: string;
+  classDescription: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  maxMentee: number;
+  category: string;
+  tags: string[];
+  image: File | null;
+};
