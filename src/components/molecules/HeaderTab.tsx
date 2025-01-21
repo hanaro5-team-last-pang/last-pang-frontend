@@ -26,23 +26,28 @@ export default function HeaderTab() {
       tabTitle: '홈',
       tabOnClickEvent: () => router.push('/'),
       tabListClassName:
-        currentLocation === '/' ? 'bg-gray-100 text-hanaGreen' : '',
+        currentLocation === '/' ? 'bg-gray-100 text-hanaGreen px-2' : 'px-2',
     },
     {
       tabTitle: '멘토링',
       tabOnClickEvent: () => router.push('/mentorings'),
       tabListClassName:
-        currentLocation === '/mentorings' ? 'bg-gray-100 text-hanaGreen' : '',
+        currentLocation === '/mentorings'
+          ? 'bg-gray-100 text-hanaGreen px-2'
+          : 'px-2',
     },
     {
       tabTitle: '금융 뉴스',
       tabOnClickEvent: () => router.push('/news'),
       tabListClassName:
-        currentLocation === '/news' ? 'bg-gray-100 text-hanaGreen' : '',
+        currentLocation === '/news'
+          ? 'bg-gray-100 text-hanaGreen px-2'
+          : 'px-2',
     },
     {
       tabTitle: '마이 페이지',
       tabOnClickEvent: handleShowComponent,
+      tabListClassName: 'px-2',
       tabComponent: (
         <div>
           {showTabComponent && (
@@ -82,7 +87,7 @@ export default function HeaderTab() {
 
   return (
     <div>
-      <Tab tabList={tabList}></Tab>
+      <Tab tabList={tabList} />
     </div>
   );
 }
