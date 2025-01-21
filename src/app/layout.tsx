@@ -8,7 +8,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="font-fontRegular">{children}</body>
+      <body className="font-fontRegular">
+        {children}
+        <div id={'modal-root'} />
+      </body>
     </html>
   );
 }

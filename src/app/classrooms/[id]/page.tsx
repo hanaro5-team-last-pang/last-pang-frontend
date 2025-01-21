@@ -43,6 +43,9 @@ export default async function Page(props: { params: Params }) {
           <div className="p-4 hidden lg:block relative overflow-y-auto">
             <ChatComponent classroomId={classroomId} />
           </div>
+          <Link href={`/classrooms/${classroomId}/review`}>
+            모달 폼 불러오기
+          </Link>
         </div>
       </div>
     </StompConnectionProvider>

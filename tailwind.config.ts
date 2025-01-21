@@ -62,6 +62,13 @@ export default {
 
         badgePurple: '#AF52DE',
         badgeGreen: '#34C759',
+
+        cardGreen: '#C8F5CF',
+        cardGray: '#EFEFEF',
+        cardBlue: '#EAF1FA',
+        cardRed: '#FFE5E5',
+        cardOrange: '#FFF2E4',
+        cardPurple: '#F6EDFF',
       },
       screens: {
         xs: '420px',

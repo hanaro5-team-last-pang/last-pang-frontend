@@ -6,6 +6,7 @@ import {
   LoginType,
   MenteeSignUpType,
   MentorSignUpType,
+  SubmitReviewFormType,
 } from '@/hanaHakdang';
 
 export async function login(
@@ -62,6 +63,20 @@ export async function changeProfileForm(
 ): Promise<ActionResType<ChangeProfileFormType, string>> {
   const value = Object.fromEntries(formData) as ChangeProfileFormType;
   const message = '프로필 폼 데이터 변경 액션';
+
+  return {
+    value: value,
+    message: message,
+    isError: false,
+  };
+}
+
+export async function submitReview(
+  prevState: ActionResType<SubmitReviewFormType, string>,
+  formData: FormData
+): Promise<ActionResType<SubmitReviewFormType, string>> {
+  const value = Object.fromEntries(formData) as SubmitReviewFormType;
+  const message = '후기 제출 액션';
 
   return {
     value: value,

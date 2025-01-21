@@ -20,7 +20,7 @@ export default function Button({
   className,
 }: ButtonProps) {
   return (
-    <div>
+    <>
       {children ? (
         <HeadlessButton
           type="button"
@@ -42,6 +42,6 @@ export default function Button({
           {text}
         </HeadlessButton>
       )}
-    </div>
+    </>
   );
 }
