@@ -5,7 +5,7 @@ interface MainpageTextProps {
   description: string;
   buttonRoute: string;
 }
-export default function MainpageText({
+export default function MainPageText({
   title,
   description,
   buttonRoute,
