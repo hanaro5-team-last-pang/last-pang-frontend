@@ -1,4 +1,4 @@
-import Card from '@/components/molecules/Card';
+import ProductsCard from '@/components/molecules/ProductsCard';
 import { CardType } from '@/hanaHakdang';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
@@ -23,7 +23,7 @@ export default function Carousel({ cards }: CarouselProps) {
       <Slider {...settings}>
         {cards.map((items, index) => (
           <div key={index}>
-            <Card
+            <ProductsCard
               cardColor={items.cardColor}
               cardTitle={items.cardTitle}
               cardDescription={items.cardDescription}
