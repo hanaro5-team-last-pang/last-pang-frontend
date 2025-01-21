@@ -3,12 +3,12 @@ import IconButton from '@/components/atoms/IconButton';
 import LinkButton from '@/components/atoms/LinkButton';
 import HeaderTab from '@/components/molecules/HeaderTab';
 import LandingText from '@/components/molecules/LandingText';
-import MainpageText from '@/components/molecules/MainpageText';
+import MainPageText from '@/components/molecules/MainpageText';
 import CardView from '@/components/organisms/CardView';
 import Footer from '@/components/organisms/Footer';
 import Header from '@/components/organisms/Header';
 import { cardData, iconButtonData, newsData } from '@/utils/dummy';
-import landing from 'public/img_landing.png';
+import landing from 'public/img_landing_3.png';
 import banner from 'public/img_main_banner.png';
 import Image from 'next/image';
 
@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="wrapper flex flex-col w-full my-20 gap-20 items-center">
           <div className="w-full px-4">
-            <MainpageText
+            <MainPageText
               title="카테고리"
               description="카테고리별 멘토링 프로그램을 만나보세요"
               buttonRoute="/mentorings"
@@ -48,7 +48,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full px-4">
-            <MainpageText
+            <MainPageText
               title="멘토링 목록"
               description="진행 예정 멘토링 프로그램을 확인하세요"
               buttonRoute="/mentorings"
@@ -78,7 +78,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full px-4">
-            <MainpageText
+            <MainPageText
               title="금융 NEWS"
               description="최신 금융 이슈에 대해 알아보세요"
               buttonRoute="/news"

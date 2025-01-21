@@ -24,7 +24,7 @@ export default function AlarmDropdown({
         {index !== 0 && <hr className="border-t border-gray-300" />}
         <button
           onClick={() => console.log(1)}
-          className="w-full h-full text-left ml-2 mt-2"
+          className="w-full h-full text-left mt-2"
         >
           <div className="drop-shadow text-xs mb-2">멘토링 5분 전입니다.</div>
           <div className="flex text-xs">
@@ -41,7 +41,7 @@ export default function AlarmDropdown({
       <div>
         {index !== 0 && <hr className="border-t border-gray-300" />}
         <button
-          className="w-full h-full text-left ml-2 mt-2"
+          className="w-full h-full text-left mt-2"
           onClick={() => {
             console.log(2);
           }}
