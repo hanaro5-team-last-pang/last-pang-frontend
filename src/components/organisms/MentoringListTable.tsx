@@ -43,7 +43,7 @@ export default function MentoringListTable() {
     {
       field: 'mentoringDate',
       headerName: '날짜',
-      width: 180, // 기본 너비 설정
+      width: 160, // 기본 너비 설정
       minWidth: 140,
     },
     {
@@ -55,9 +55,15 @@ export default function MentoringListTable() {
     {
       field: 'status',
       headerName: '상태',
-      width: 140,
+      width: 120,
       minWidth: 110,
       cellRenderer: MentoringListTableStatus,
+    },
+    {
+      field: 'review',
+      headerName: '리뷰',
+      width: 100,
+      minWidth: 110,
     },
   ];
 

@@ -43,7 +43,8 @@ export default function MyPageNavbar() {
       <a
         className={clsx(
           'flex my-4 items-center rounded-lg p-2',
-          currentLocation === '/mypage/mentorings' &&
+          (currentLocation === '/mypage/mentorings' ||
+            currentLocation === '/mypage/open-mentoring') &&
             'bg-ourLightGreen shadow-lg'
         )}
         href="/mypage/mentorings"

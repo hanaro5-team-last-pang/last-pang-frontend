@@ -35,7 +35,7 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
       </div>
       <hr className="border-t border-gray-300 mb-3" />
     </div>,
-    <Link className="flex my-2 items-center" href="/open-mentoring">
+    <Link className="flex my-2 items-center" href="/mypage/open-mentoring">
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiShoppingBagOpen />
       </div>
