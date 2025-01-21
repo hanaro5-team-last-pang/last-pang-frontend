@@ -54,3 +54,15 @@ export type ChangeProfileFormType = {
   newPassword: string;
   newConfirmedPassword: string;
 };
+
+export type SubmitReviewFormType = {
+  ratingScore: string;
+  review: string;
+};
+
+export type CardType = {
+  cardColor: string;
+  cardTitle: string;
+  cardDescription: string;
+  cardImageUrl: string;
+};
