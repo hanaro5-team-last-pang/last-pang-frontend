@@ -4,6 +4,7 @@ import Button from '@/components/atoms/Button';
 import MyCardCareerForm from '@/components/template/MyCardCareerForm';
 import MyCardIntroductionForm from '@/components/template/MyCardIntroductionForm';
 import MyCardProfileForm from '@/components/template/MyCardProfileForm';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa6';
 import { RiPencilFill } from 'react-icons/ri';
 import { useState } from 'react';
 
@@ -54,7 +55,7 @@ export default function Page() {
   };
 
   return (
-    <div className="px-4 relative">
+    <div className="p-4 relative">
       {!modifyMode ? (
         <button
           type="button"
@@ -83,7 +84,9 @@ export default function Page() {
         {loginUser} 멘토
       </div>
       <div className="my-10 mx-5 flex justify-center items-center">
-        <div className="text-3xl text-ourGreen">"</div>
+        <div className="text-3xl text-ourGreen">
+          <FaQuoteLeft />
+        </div>
         {modifyMode ? (
           <input
             className="text-xl w-full px-2 text-center align-middle outline outline-2 outline-blue-400 focus:outline-2 focus:outline-blue-400"
@@ -95,7 +98,9 @@ export default function Page() {
             {oneLineIntroduction}
           </div>
         )}
-        <div className="text-3xl text-ourGreen">"</div>
+        <div className="text-3xl text-ourGreen">
+          <FaQuoteRight />
+        </div>
       </div>
       <div className="grid grid-cols-2">
         <div className="flex justify-center">

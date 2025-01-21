@@ -13,11 +13,9 @@ export default function Page() {
               <h1 className="text-2xl font-bold">최근 금융 동향</h1>
               <SearchBar />
             </div>
-            <div className="grid sm:grid-cols-2 grid-rows-3 grid-cols-1 gap-6 gap-y-8 mt-4">
+            <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 gap-y-12 mt-4">
               {newsData.map((card) => (
-                <div key={card.id}>
-                  <CardView {...card} id={`/news/${card.id}`} />
-                </div>
+                <CardView key={card.id} {...card} id={`/news/${card.id}`} />
               ))}
             </div>
           </div>

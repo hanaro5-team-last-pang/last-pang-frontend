@@ -39,7 +39,7 @@ export default function CardView({
   return (
     <Link href={id}>
       <div
-        className="flex flex-col rounded-2xl overflow-hidden border-gray-200 border-[0.5px] shadow-md
+        className="flex flex-col rounded-2xl overflow-hidden border-gray-200 border-[0.5px] shadow-md w-full
       transition-transform duration-300 ease-in-out transform hover:-translate-y-3 hover:shadow-lg cursor-pointer"
       >
         <div className="relative text-white flex items-center justify-center">
@@ -51,8 +51,13 @@ export default function CardView({
               />
             )}
           </div>
-          <div className="relative w-full h-48">
-            <Image src={imageSrc} alt={''} fill />
+          <div className="relative w-full aspect-[3/2]">
+            <Image
+              src={imageSrc}
+              alt={''}
+              style={{ objectFit: 'cover' }}
+              layout="fill"
+            />
           </div>
         </div>
         <div className="flex-1 p-4">

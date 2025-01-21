@@ -31,7 +31,7 @@ export default function MentoringList({
   imageSrc,
 }: MentoringListProps) {
   return (
-    <div className="flex border rounded-2xl shadow-md overflow-hidden h-52">
+    <div className="flex border rounded-2xl shadow-md overflow-hidden">
       <div className="relative w-2/5 text-white flex items-center justify-center">
         <div>
           <Badge
@@ -39,7 +39,14 @@ export default function MentoringList({
             className={`rounded-lg absolute top-3 left-2 z-10 ${badgeClassName}`}
           />
         </div>
-        <Image src={imageSrc} alt={''} fill />
+        <div className="relative w-full aspect-[3/2]">
+          <Image
+            src={imageSrc}
+            alt={''}
+            style={{ objectFit: 'cover' }}
+            layout="fill"
+          />
+        </div>
       </div>
       <div className="flex-1 p-4">
         <div className="flex flex-col h-full">
