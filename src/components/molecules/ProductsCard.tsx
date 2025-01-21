@@ -8,7 +8,7 @@ interface CardProps {
   cardImage: string;
   cardLinkUrl?: string;
 }
-export default function Card({
+export default function ProductsCard({
   cardColor,
   cardTitle,
   cardDescription,
