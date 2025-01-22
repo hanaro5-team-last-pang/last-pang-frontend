@@ -250,4 +250,34 @@ export const faqData = [
       createAt: '2024년 12월 25일',
     },
   ],
+  [
+    {
+      profileImage: '/img_landing.png',
+      userName: '1',
+      comment: '다음 강의가 일정이 궁금합니다?',
+      createAt: '2024년 12월 12일',
+    },
+    {
+      profileImage: '/img_landing.png',
+      userName: '나는 멘토다',
+      comment:
+        '실시간 강의와 녹화 강의가 혼합되어 진행됩니다. 질문은 실시간으로 가능합니다.',
+      createAt: '2024년 12월 15일',
+    },
+  ],
+  [
+    {
+      profileImage: '/img_landing.png',
+      userName: '2',
+      comment: '다음 강의가 일정이 궁금합니다?',
+      createAt: '2024년 12월 12일',
+    },
+    {
+      profileImage: '/img_landing.png',
+      userName: '3',
+      comment:
+        '실시간 강의와 녹화 강의가 혼합되어 진행됩니다. 질문은 실시간으로 가능합니다.',
+      createAt: '2024년 12월 15일',
+    },
+  ],
 ];
