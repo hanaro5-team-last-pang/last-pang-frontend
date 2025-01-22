@@ -47,11 +47,13 @@ export default function HeaderTab() {
     {
       tabTitle: '마이 페이지',
       tabOnClickEvent: handleShowComponent,
-      tabListClassName: 'px-2',
+      tabListClassName: currentLocation.startsWith('/mypage')
+        ? 'bg-gray-100 text-hanaGreen px-2'
+        : 'px-2',
       tabComponent: (
         <div>
           {showTabComponent && (
-            <div className="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2 bg-white">
+            <div className="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2 bg-white text-black">
               {loginUserRole === 'mentor' && (
                 <a
                   className="flex my-4 items-center"

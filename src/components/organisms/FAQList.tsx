@@ -2,6 +2,7 @@
 
 import Button from '@/components/atoms/Button';
 import Comment, { CommentProps } from '@/components/molecules/Comment';
+import Pagination from '@/components/organisms/Pagination';
 import { FaLocationArrow } from 'react-icons/fa6';
 import React, { useState } from 'react';
 
@@ -11,6 +12,10 @@ interface FAQListProps {
 
 export default function FAQList({ faqs }: FAQListProps) {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3;
+  const startIndex = currentPage * itemsPerPage;
+  const currentFAQs = faqs.slice(startIndex, startIndex + itemsPerPage);
 
   const toggleAnswer = (index: number) => {
     setOpenIndexes((prev) =>
@@ -20,7 +25,7 @@ export default function FAQList({ faqs }: FAQListProps) {
 
   return (
     <div>
-      {faqs.map((faqComments, index) => {
+      {currentFAQs.map((faqComments, index) => {
         const [questionComment, answerComment] = faqComments;
 
         return (
@@ -57,6 +62,13 @@ export default function FAQList({ faqs }: FAQListProps) {
           </div>
         );
       })}
+      <Pagination
+        currentPage={currentPage}
+        totalItems={faqs.length}
+        itemsPerPage={itemsPerPage}
+        onPageChange={setCurrentPage}
+        buttonColor="bg-ourOrange"
+      />
     </div>
   );
 }
