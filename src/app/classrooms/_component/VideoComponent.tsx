@@ -35,7 +35,7 @@ export default function VideoComponent() {
             );
           })}
         </div>
-        <button onClick={toggleVideo}>ㅎㅇㅎㅇㅎㅇ</button>
+        <button onClick={toggleVideo}>비디오 종료</button>
       </div>
       <div>
         <span>오디오</span>
