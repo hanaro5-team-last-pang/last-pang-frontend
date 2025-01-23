@@ -1,6 +1,6 @@
 'use client';
 
-import { mentorSignUp } from '@/app/action';
+import { mentorSignUp } from '@/app/(auth)/action';
 import Button from '@/components/atoms/Button';
 import IconBadge from '@/components/atoms/IconBadge';
 import Input from '@/components/atoms/Input';
@@ -13,12 +13,12 @@ export default function MentorSignUpForm() {
   const [hide, setHide] = useState(false);
   const [state, formAction] = useActionState(mentorSignUp, {
     value: {
-      identificationNumber: '',
+      code: '',
+      name: '',
       email: '',
       password: '',
-      confirmPassword: '',
-      birthDate: '',
-      userName: '',
+      confirmedPassword: '',
+      birth: '',
     },
     message: '멘티 회원가입 이전',
     isError: false,
@@ -38,18 +38,18 @@ export default function MentorSignUpForm() {
       action={formAction}
     >
       <Input
-        name="identificationNumber"
+        name="code"
         label="사원번호"
         placeholder="사원번호를 입력해주세요."
-        defaultValue={state.value.identificationNumber}
+        defaultValue={state.value.code}
         className="my-2 text-gray-400"
         labelClassName="font-bold"
       />
       <Input
-        name="userName"
+        name="name"
         label="이름"
         placeholder="이름을 입력해주세요."
-        defaultValue={state.value.userName}
+        defaultValue={state.value.name}
         className="my-2 text-gray-400"
         labelClassName="font-bold"
       />
@@ -79,10 +79,10 @@ export default function MentorSignUpForm() {
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
       <Input
-        name="confirmPassword"
+        name="confirmedPassword"
         label="비밀번호 확인"
         placeholder="비밀번호를 다시 한 번 입력하세요."
-        defaultValue={state.value.confirmPassword}
+        defaultValue={state.value.confirmedPassword}
         type={hide ? 'text' : 'password'}
         className="my-2 text-gray-400 bg-white"
         labelClassName="font-bold"
@@ -90,10 +90,10 @@ export default function MentorSignUpForm() {
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
       <Input
-        name="birthDate"
+        name="birth"
         label="생년월일"
         placeholder=""
-        defaultValue={state.value.birthDate}
+        defaultValue={state.value.birth}
         type="date"
         className="my-2 text-gray-400"
         labelClassName="font-bold"
@@ -101,7 +101,7 @@ export default function MentorSignUpForm() {
       <Button
         type="submit"
         text="회원가입"
-        className="w-full h-full bg-hanaGreen80 mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
+        className="w-full h-full bg-ourGreen mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
       />
       <div className="flex justify-center gap-2 my-2">
         <div className="text-xs text-gray-600">
