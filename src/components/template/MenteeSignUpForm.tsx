@@ -1,27 +1,31 @@
 'use client';
 
-import { menteeSignUp } from '@/app/action';
+import { menteeSignUp, sendEmail } from '@/app/(auth)/action';
 import Button from '@/components/atoms/Button';
 import IconBadge from '@/components/atoms/IconBadge';
 import Input from '@/components/atoms/Input';
 import { AiFillEye } from 'react-icons/ai';
 import { MdArrowOutward } from 'react-icons/md';
 import Link from 'next/link';
-import { useActionState, useState } from 'react';
+import { useActionState, useState, useRef } from 'react';
 
 export default function MenteeSignUpForm() {
-  const [hide, setHide] = useState(false);
+  //멘티 회원가입 폼 액션
   const [state, formAction] = useActionState(menteeSignUp, {
     value: {
       email: '',
+      name: '',
       password: '',
-      confirmPassword: '',
-      birthDate: '',
-      userName: '',
+      confirmedPassword: '',
+      birth: '',
     },
     message: '멘티 회원가입 이전',
     isError: false,
   });
+
+  // 이메일 인증에 필요한 value
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [hide, setHide] = useState(false);
 
   const onToggleHide = () => {
     setHide((prev) => {
@@ -31,16 +35,29 @@ export default function MenteeSignUpForm() {
     });
   };
 
+  const handleSendEmail = async () => {
+    if (emailRef.current) {
+      const email = emailRef.current.value;
+      const response = await sendEmail(email);
+
+      if (response.success) {
+        alert('이메일이 전송되었습니다.');
+      } else {
+        alert(response.message);
+      }
+    }
+  };
+
   return (
     <form
       className="my-4 grid grid-cols-1 gap-3 h-[375px] overflow-y-auto scrollbar-hide"
       action={formAction}
     >
       <Input
-        name="userName"
+        name="name"
         label="이름"
         placeholder="이름을 입력해주세요."
-        defaultValue={state.value.userName}
+        defaultValue={state.value.name}
         className="my-2 text-gray-400"
         labelClassName="font-bold"
       />
@@ -51,10 +68,12 @@ export default function MenteeSignUpForm() {
         defaultValue={state.value.email}
         className="my-2 text-gray-400 bg-white h-[42px]"
         labelClassName="font-bold"
+        ref={emailRef}
       >
         <Button
           type="button"
           text="인증"
+          onClick={handleSendEmail}
           className="bg-ourGreen text-xs px-4 py-2 rounded-xl whitespace-nowrap text-white"
         />
       </Input>
@@ -70,10 +89,10 @@ export default function MenteeSignUpForm() {
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
       <Input
-        name="confirmPassword"
+        name="confirmedPassword"
         label="비밀번호 확인"
         placeholder="비밀번호를 다시 한 번 입력하세요."
-        defaultValue={state.value.confirmPassword}
+        defaultValue={state.value.confirmedPassword}
         type={hide ? 'text' : 'password'}
         className="my-2 text-gray-400 bg-white"
         labelClassName="font-bold"
@@ -81,10 +100,10 @@ export default function MenteeSignUpForm() {
         <AiFillEye className="cursor-pointer" onClick={onToggleHide} />
       </Input>
       <Input
-        name="birthDate"
+        name="birth"
         label="생년월일"
         placeholder=""
-        defaultValue={state.value.birthDate}
+        defaultValue={state.value.birth}
         type="date"
         className="my-2 text-gray-400"
         labelClassName="font-bold"
@@ -92,7 +111,7 @@ export default function MenteeSignUpForm() {
       <Button
         type="submit"
         text="회원가입"
-        className="w-full h-full bg-hanaGreen80 mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white font-bold"
+        className="w-full h-full bg-ourGreen mt-2 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white font-bold"
       />
       <div className="flex justify-center gap-2 my-2">
         <div className="text-xs text-gray-600">
