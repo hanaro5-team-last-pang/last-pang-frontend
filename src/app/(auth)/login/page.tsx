@@ -74,7 +74,7 @@ export default function Page() {
           <Button
             type="submit"
             text="로그인"
-            className="w-full h-full bg-hanaGreen80 px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
+            className="w-full h-full bg-ourGreen px-4 py-2 rounded-xl flex justify-center items-center gap-2 transition text-white"
           />
           <div className="flex justify-center gap-2">
             <div className="text-xs text-gray-600">

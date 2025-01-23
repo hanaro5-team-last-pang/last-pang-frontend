@@ -15,23 +15,6 @@ export type LoginType = {
   password: string;
 };
 
-export type MenteeSignUpType = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  userName: string;
-  birthDate: string;
-};
-
-export type MentorSignUpType = {
-  identificationNumber: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  userName: string;
-  birthDate: string;
-};
-
 export type ChatResponseType = {
   readonly userId: number;
   readonly username: string;
