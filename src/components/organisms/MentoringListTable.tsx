@@ -2,7 +2,7 @@
 
 // TODO: ag-grid 표 컴포넌트 상태 관리 필요할 시 변경 필요
 import MentoringListTableStatus from '@/components/organisms/MentoringListTableStatus';
-import { MentoringType } from '@/hanaHakdang';
+import { MentoringType } from '@/types/hanaHakdang';
 import {
   ModuleRegistry,
   ColDef,
