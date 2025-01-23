@@ -6,7 +6,7 @@ import {
   StompPublishContext,
   StompSubscribeContext,
 } from '@/context/StompConnectionContext';
-import { ChatRequestType, ChatResponseType } from '@/hanaHakdang';
+import { ChatRequestType, ChatResponseType } from '@/types/hanaHakdang';
 import { IMessage } from '@stomp/stompjs';
 import dayjs from 'dayjs';
 import { IoSend } from 'react-icons/io5';

@@ -3,7 +3,7 @@
 import { submitReview } from '@/app/action';
 import Button from '@/components/atoms/Button';
 import Carousel from '@/components/molecules/Carousel';
-import { CardType } from '@/hanaHakdang';
+import { CardType } from '@/types/hanaHakdang';
 import { Rating } from 'react-simple-star-rating';
 import { useActionState, useState } from 'react';
 

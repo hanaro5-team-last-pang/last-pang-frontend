@@ -1,6 +1,6 @@
 'use server';
 
-import { AccountType, MentoringType } from '@/hanaHakdang';
+import { AccountType, MentoringType } from '@/types/hanaHakdang';
 
 export async function getMentorings(): Promise<MentoringType[]> {
   return [

@@ -1,5 +1,5 @@
 import ProductsCard from '@/components/molecules/ProductsCard';
-import { CardType } from '@/hanaHakdang';
+import { CardType } from '@/types/hanaHakdang';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
