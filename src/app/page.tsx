@@ -1,4 +1,3 @@
-// TODO: 컴포넌트 추가 시 배경색 지우기
 import IconButton from '@/components/atoms/IconButton';
 import LinkButton from '@/components/atoms/LinkButton';
 import HeaderTab from '@/components/molecules/HeaderTab';

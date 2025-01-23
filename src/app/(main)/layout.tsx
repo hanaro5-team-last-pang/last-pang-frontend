@@ -9,9 +9,11 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Header>
         <HeaderTab />
       </Header>
-      <div className="header-skeleton" />
-      <div className="header-menu-skeleton" />
-      <div>{children}</div>
+      <div className="min-h-screen">
+        <div className="header-skeleton" />
+        <div className="header-menu-skeleton" />
+        {children}
+      </div>
       <Footer />
     </>
   );

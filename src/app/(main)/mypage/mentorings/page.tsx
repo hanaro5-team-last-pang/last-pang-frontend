@@ -1,7 +1,10 @@
+import { getMentorings } from '@/app/(main)/mypage/actions';
 import LinkButton from '@/components/atoms/LinkButton';
 import MentoringListTable from '@/components/organisms/MentoringListTable';
 
-export default function Page() {
+export default async function Page() {
+  const mentorings = await getMentorings();
+
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
@@ -15,7 +18,7 @@ export default function Page() {
         />
       </div>
       <div className="flex justify-center mt-3 mb-10 px-2">
-        <MentoringListTable />
+        <MentoringListTable mentorings={mentorings} />
       </div>
     </div>
   );

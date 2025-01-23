@@ -78,3 +78,22 @@ export type openMentoringFormType = {
   tags: string[];
   image: File | null;
 };
+
+export type AuthType = {
+  userId: number;
+  name: string;
+};
+
+export type MentoringType = {
+  id: number;
+  mentoringName: string;
+  mentoringDate: Date;
+  mentorName: string;
+  status: string;
+};
+
+export type AccountType = {
+  name: string;
+  birth: string;
+  profileImage: string;
+};

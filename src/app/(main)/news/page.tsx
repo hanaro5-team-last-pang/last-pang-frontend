@@ -1,9 +1,26 @@
+import { getNewsData } from '@/app/(main)/news/action';
 import CheckboxList from '@/components/molecules/CheckboxList';
 import CardView from '@/components/organisms/CardView';
 import SearchBar from '@/components/template/SearchBar';
-import { category, newsData } from '@/utils/dummy';
+import { category } from '@/utils/dummy';
+import dayjs from 'dayjs';
 
-export default function Page() {
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+export default async function Page(props: { searchParams: SearchParams }) {
+  const searchParams = await props.searchParams;
+  const pageParam = searchParams.page;
+
+  let pageNum: number = 0;
+  try {
+    pageNum = Number(pageParam);
+  } catch (e) {
+    console.error(e);
+    pageNum = 0;
+  }
+
+  const newsData = await getNewsData(pageNum);
+
   return (
     <>
       <div className="wrapper flex w-full my-10 gap-10 items-start">
@@ -15,7 +32,14 @@ export default function Page() {
             </div>
             <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 gap-y-12 mt-4">
               {newsData.map((card) => (
-                <CardView key={card.id} {...card} id={`/news/${card.id}`} />
+                <CardView
+                  key={card.id}
+                  {...card}
+                  imageSrc={card.newsThumbnailUrl}
+                  description={card.content}
+                  date={dayjs(card.createdAt).format('YYYY년 MM월 DD일')}
+                  id={card.newsUrl}
+                />
               ))}
             </div>
           </div>

@@ -8,6 +8,7 @@ import {
   MentorSignUpType,
   SubmitReviewFormType,
   openMentoringFormType,
+  AuthType,
 } from '@/hanaHakdang';
 
 export async function login(
@@ -106,5 +107,12 @@ export async function openMentoring(
     value: value,
     message: message,
     isError: false,
+  };
+}
+
+export async function getMyAuthData(): Promise<AuthType> {
+  return {
+    name: '김하나',
+    userId: 1,
   };
 }

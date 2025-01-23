@@ -1,5 +1,6 @@
 'use client';
 
+import { getAccountData } from '@/app/(main)/mypage/actions';
 import { changeProfileForm } from '@/app/action';
 import Button from '@/components/atoms/Button';
 import Input from '@/components/atoms/Input';
@@ -7,10 +8,12 @@ import { AiFillEye } from 'react-icons/ai';
 import Image from 'next/image';
 import { useActionState, useState } from 'react';
 
-export default function Page() {
-  const userImage = 'https://placehold.co/25x25';
-  const userName = '정중일';
-  const birthDate = '1998년 1월 1일';
+export default async function Page() {
+  const {
+    name: userName,
+    profileImage: userImage,
+    birth: birthDate,
+  } = await getAccountData();
   const [hide, setHide] = useState(false);
   const [showNewImage, setShowNewImage] = useState<string | null>(null);
   const [newImage, setNewImage] = useState<File | null>(null);

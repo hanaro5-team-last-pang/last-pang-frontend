@@ -2,6 +2,7 @@
 
 // TODO: ag-grid 표 컴포넌트 상태 관리 필요할 시 변경 필요
 import MentoringListTableStatus from '@/components/organisms/MentoringListTableStatus';
+import { MentoringType } from '@/hanaHakdang';
 import {
   ModuleRegistry,
   ColDef,
@@ -12,26 +13,14 @@ import { AgGridReact } from 'ag-grid-react';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
-export default function MentoringListTable() {
+interface Props {
+  mentorings: MentoringType[];
+}
+
+export default function MentoringListTable(props: Props) {
+  const { mentorings } = props;
   const router = useRouter();
   ModuleRegistry.registerModules([ClientSideRowModelModule]);
-
-  const rowData = [
-    {
-      id: 1,
-      mentoringName: '양지은의 주식 투자 성공기',
-      mentoringDate: '2025년 1월 10일',
-      mentorName: '양지은',
-      status: '멘토링 예약',
-    },
-    {
-      id: 2,
-      mentoringName: '정중일의 주식 투자 성공기',
-      mentoringDate: '2025년 1월 16일',
-      mentorName: '정중일',
-      status: '멘토링 완료',
-    },
-  ];
 
   const colDefs: ColDef[] = [
     {
@@ -80,7 +69,7 @@ export default function MentoringListTable() {
       className={`min-h-[135px] max-h-[500px] w-full overflow-y-auto scrollbar-hide`}
     >
       <AgGridReact
-        rowData={rowData}
+        rowData={mentorings}
         columnDefs={colDefs}
         onRowClicked={handleRowClick}
       />

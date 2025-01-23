@@ -1,4 +1,5 @@
-export const STOMP_BROKER_URL = 'ws://localhost:8081/classroom';
+export const STOMP_BROKER_URL =
+  'ws://ec2-54-180-227-251.ap-northeast-2.compute.amazonaws.com/classroom';
 
 export const CHAT_SUBSCRIBE_URL = (classroomId: bigint) =>
   `/topic/chat/${classroomId}`;

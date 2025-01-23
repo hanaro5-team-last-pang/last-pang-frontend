@@ -4,6 +4,7 @@ import Tab from '@/components/atoms/Tab';
 import { IoIdCardOutline } from 'react-icons/io5';
 import { MdOutlineAccountBox } from 'react-icons/md';
 import { PiShoppingBagOpen } from 'react-icons/pi';
+import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -55,7 +56,7 @@ export default function HeaderTab() {
           {showTabComponent && (
             <div className="rounded-lg drop-shadow scrollbar-hide border border-gray-200 px-2 bg-white text-black">
               {loginUserRole === 'mentor' && (
-                <a
+                <Link
                   className="flex my-4 items-center"
                   href="/mypage/card-settings"
                 >
@@ -63,9 +64,9 @@ export default function HeaderTab() {
                     <IoIdCardOutline />
                   </div>
                   <div className="text-sm px-2">명함 설정</div>
-                </a>
+                </Link>
               )}
-              <a
+              <Link
                 className="flex my-4 items-center"
                 href="/mypage/account-settings"
               >
@@ -73,13 +74,16 @@ export default function HeaderTab() {
                   <MdOutlineAccountBox />
                 </div>
                 <div className="text-sm px-2">계정 설정</div>
-              </a>
-              <a className="flex my-4 items-center" href="/mypage/mentorings">
+              </Link>
+              <Link
+                className="flex my-4 items-center"
+                href="/mypage/mentorings"
+              >
                 <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
                   <PiShoppingBagOpen />
                 </div>
                 <div className="text-sm px-2">멘토링 기록</div>
-              </a>
+              </Link>
             </div>
           )}
         </div>
