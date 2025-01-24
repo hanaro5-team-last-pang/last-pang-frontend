@@ -1,3 +1,4 @@
+import { getLectureData } from '@/app/(main)/mentorings/actions';
 import TabBody from '@/components/molecules/TabBody';
 import MentoringIntro from '@/components/organisms/MentoringIntro';
 import MentoringDescriptionForm from '@/components/template/MentoringDescriptionForm';
@@ -8,7 +9,9 @@ import MentoringReviewForm from '@/components/template/MentoringReviewForm';
 type Params = Promise<{ id: string }>;
 
 export default async function Page(props: { params: Params }) {
-  const { id } = await props.params;
+  const { id: lectureId } = await props.params;
+
+  const lectureData = await getLectureData(lectureId);
 
   // 메뉴 Title
   const tabList = [
@@ -20,26 +23,16 @@ export default async function Page(props: { params: Params }) {
 
   //각각 메뉴에 대한 body list
   const tabPanelList = [
-    <MentoringDescriptionForm />,
-    <MentoringIntroduceForm />,
-    <MentoringReviewForm />,
-    <MentoringFAQForm />,
+    <MentoringDescriptionForm lectureDescription={lectureData.description} />,
+    <MentoringIntroduceForm lectureId={lectureId} />,
+    <MentoringReviewForm lectureId={lectureId} />,
+    <MentoringFAQForm lectureId={lectureId} />,
   ];
 
   return (
     <>
       <div>
-        <MentoringIntro
-          mentorImageUrl={'/img_landing.png'}
-          mentorName={'한성민'}
-          startAt={'2025-01-23'}
-          takenTime={1}
-          currentAttendees={3}
-          totalAttendees={5}
-          classroomTitle={'어서오세요 동물의 숲'}
-          tagTitle={'마감임박'}
-          tagList={['하이', '방가']}
-        />
+        <MentoringIntro lectureData={lectureData} />
       </div>
       <div className="wrapper w-full items-start mb-10">
         <TabBody

@@ -45,6 +45,7 @@ export async function mentorSignUp(
 ): Promise<ActionResType<MentorSignUpType, string>> {
   const value = Object.fromEntries(formData) as MentorSignUpType;
   const message = '멘토 회원가입 액션';
+  console.log(value);
 
   return {
     value: value,

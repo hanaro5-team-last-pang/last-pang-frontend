@@ -1,13 +1,14 @@
 'use client';
 
+import { FaqResponseType } from '@/app/(main)/mentorings/type';
 import Button from '@/components/atoms/Button';
-import Comment, { CommentProps } from '@/components/molecules/Comment';
+import Comment from '@/components/molecules/Comment';
 import Pagination from '@/components/organisms/Pagination';
 import { FaLocationArrow } from 'react-icons/fa6';
 import React, { useState } from 'react';
 
 interface FAQListProps {
-  faqs: CommentProps[][];
+  faqs: FaqResponseType[];
 }
 
 export default function FAQList({ faqs }: FAQListProps) {
@@ -26,19 +27,20 @@ export default function FAQList({ faqs }: FAQListProps) {
   return (
     <div>
       {currentFAQs.map((faqComments, index) => {
-        const [questionComment, answerComment] = faqComments;
+        const { userName, content, profileImageUrl, createdAt, answers } =
+          faqComments;
 
         return (
           <div key={index} className="mb-4">
             <div className="my-2 border-t border-gray-300" />
             <div className="flex items-center justify-between">
               <Comment
-                profileImage={questionComment.profileImage}
-                userName={questionComment.userName}
-                comment={questionComment.comment}
-                createAt={questionComment.createAt}
+                profileImageUrl={profileImageUrl}
+                userName={userName}
+                content={content}
+                createdAt={createdAt}
               />
-              {answerComment && (
+              {answers.length > 0 && (
                 <Button
                   type="button"
                   className="text-semibold text-sm mr-2 mb-4"
@@ -49,13 +51,13 @@ export default function FAQList({ faqs }: FAQListProps) {
                 </Button>
               )}
             </div>
-            {openIndexes.includes(index) && answerComment && (
+            {openIndexes.includes(index) && answers.length > 0 && (
               <div className="ml-20 mt-2">
                 <Comment
-                  profileImage={answerComment.profileImage}
-                  userName={answerComment.userName}
-                  comment={answerComment.comment}
-                  createAt={answerComment.createAt}
+                  profileImageUrl={answers[0].profileImageUrl}
+                  userName={answers[0].userName}
+                  content={answers[0].content}
+                  createdAt={answers[0].createdAt}
                 />
               </div>
             )}

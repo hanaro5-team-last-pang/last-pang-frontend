@@ -1,6 +1,30 @@
-import Image from 'next/image';
+'use client';
 
-export default function MentoringIntroduceForm() {
+import { getProfileCard } from '@/app/(main)/mentorings/actions';
+import { CardType } from '@/app/(main)/mentorings/type';
+import DefaultSpinner from '@/components/template/DefaultSpinner';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+interface Props {
+  lectureId: string;
+}
+
+export default function MentoringIntroduceForm(props: Props) {
+  const { lectureId } = props;
+  const [card, setCard] = useState<CardType | null>(null);
+
+  useEffect(() => {
+    const loadCard = async () => {
+      const profileCard = await getProfileCard(lectureId);
+      setCard(profileCard);
+    };
+    loadCard().then();
+  }, []);
+
+  if (!card) {
+    return <DefaultSpinner size={12} />;
+  }
   return (
     <div className="p-10 max-w-lg mx-auto">
       <h1 className="text-center text-2xl font-bold mb-4">'name' 멘토</h1>
@@ -10,12 +34,21 @@ export default function MentoringIntroduceForm() {
       <div className="flex items-start justify-between p-4 rounded-lg border">
         <div className="flex flex-col items-center">
           <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-gray-300">
-            <Image
-              src={'/img_landing.png'} // 실제 이미지 URL로 교체
-              alt={'멘토 명함'}
-              layout="fill"
-              objectFit="cover"
-            />
+            {card.mentorProfileImgUrl ? (
+              <Image
+                src={card.mentorProfileImgUrl}
+                alt="멘토 명함"
+                layout="fill"
+                objectFit="cover"
+              />
+            ) : (
+              <Image
+                src={'/img_landing.png'} // 실제 이미지 URL로 교체
+                alt={'멘토 명함'}
+                layout="fill"
+                objectFit="cover"
+              />
+            )}
           </div>
           <span className="text-gray-700 mt-2">나이</span>
         </div>

@@ -5,6 +5,11 @@ export type ActionResType<V, E> = {
   isError: boolean;
 };
 
+export type BaseResType<T> = {
+  message: string;
+  result: T;
+};
+
 export type LoginType = {
   email: string;
   password: string;

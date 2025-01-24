@@ -1,30 +1,40 @@
+import dayjs from 'dayjs';
 import Image from 'next/image';
 
 export interface CommentProps {
-  profileImage: string;
-  userName: string;
-  lectureName?: string;
-  comment: string;
-  createAt: string;
+  profileImageUrl?: string;
+  userName?: string;
+  lectureTitle?: string;
+  content?: string;
+  createdAt?: Date;
 }
 
 export default function Comment({
-  profileImage,
+  profileImageUrl,
   userName,
-  lectureName,
-  comment,
-  createAt,
+  lectureTitle,
+  content,
+  createdAt,
 }: CommentProps) {
   return (
     <div className="flex items-start gap-5 mb-3">
       {/* 왼쪽 div (프로필 이미지) */}
       <div className="relative w-20 h-20">
-        <Image
-          alt="프로필 이미지"
-          src={profileImage}
-          layout="fill"
-          className="rounded-full object-cover"
-        />
+        {profileImageUrl ? (
+          <Image
+            alt="프로필 이미지"
+            src={profileImageUrl}
+            layout="fill"
+            className="rounded-full object-cover"
+          />
+        ) : (
+          <Image
+            alt={`${userName} 이미지`}
+            src={'/img_landing.png'}
+            layout="fill"
+            className="rounded-full object-cover"
+          />
+        )}
       </div>
 
       {/* 오른쪽 div (댓글 내용) */}
@@ -33,12 +43,12 @@ export default function Comment({
           <div className="flex">
             <div className="font-bold">{userName}</div>
             <div className="ml-3 font-semibold text-gray-600">
-              {lectureName}
+              {lectureTitle}
             </div>
           </div>
-          <div>{createAt}</div>
+          <div>{dayjs(createdAt).format('YYYY년 MM월 DD일')}</div>
         </div>
-        <div>{comment}</div>
+        <div>{content}</div>
       </div>
     </div>
   );
