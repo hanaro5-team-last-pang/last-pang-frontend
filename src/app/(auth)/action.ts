@@ -1,127 +1,71 @@
 'use server';
 
-import * as process from 'node:process';
-import { MenteeSignUpType, MentorSignUpType, ActionResType } from './type';
-
-const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { BASE_URL } from '@/constant';
+import { redirect } from 'next/navigation';
+import {
+  MenteeSignUpType,
+  MentorSignUpType,
+  ActionResType,
+  LoginType,
+} from './type';
 
 export async function sendEmail(email: string) {
-  try {
-    const res = await fetch(`${baseURL}/send-email`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(email),
-    });
+  const res = await fetch(`${BASE_URL}/send-email`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(email),
+  });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || '이메일 전송 실패');
-    }
-
-    console.log('Email sent successfully:', data);
-
+  const data = await res.json();
+  if (!res.ok) {
     return {
-      success: true,
-      message: '인증 이메일이 전송되었습니다.',
-      data: data,
-    };
-  } catch (error: any) {
-    console.error('Error sending email:', error);
-    return {
-      success: false,
-      message: error.message || '이메일 전송 실패',
+      value: email,
+      message: data || '이메일 전송 실패',
+      isError: true,
     };
   }
+
+  return { value: email, message: '이메일 전송 성공', isError: false };
 }
 
 export async function verifyEmail(
   email: string,
   authToken: string
 ): Promise<{ message: string; isError: boolean }> {
-  const url = `${baseURL}/verify-email?email=${encodeURIComponent(email)}&authToken=${encodeURIComponent(authToken)}`;
-  console.log('Verifying email with URL:', url);
+  const url = `${BASE_URL}/verify-email?email=${encodeURIComponent(email)}&authToken=${encodeURIComponent(authToken)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+  });
 
-  try {
-    const res = await fetch(url, {
-      method: 'POST',
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.error('서버 오류 메시지:', data.message);
-      throw new Error(data.message || '이메일 인증 실패');
-    }
-
-    return {
-      message: '이메일 인증 성공',
-      isError: false,
-    };
-  } catch (error: unknown) {
-    console.error('이메일 인증 요청 중 오류 발생:', error);
-
-    let errorMessage = '이메일 인증 중 오류가 발생했습니다. 다시 시도해주세요.';
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-
-    return {
-      message: `이메일 인증 실패: ${errorMessage}`,
-      isError: true,
-    };
+  const data = await res.json();
+  if (!res.ok) {
+    console.error('서버 오류 메시지:', data.message);
+    throw new Error(data.message || '이메일 인증 실패');
   }
+  return { message: '이메일 인증 성공', isError: false };
 }
 
 export async function menteeSignUp(
   prevState: ActionResType<MenteeSignUpType, string>,
   formData: FormData
 ): Promise<ActionResType<MenteeSignUpType, string>> {
-  const validKeys = ['email', 'name', 'password', 'confirmedPassword', 'birth'];
+  const value = Object.fromEntries(formData) as MenteeSignUpType;
+  console.log(value);
 
-  // 유효한 키만 필터링하여 객체 생성
-  const filteredEntries = Array.from(formData.entries()).filter(([key]) =>
-    validKeys.includes(key)
-  );
+  const res = await fetch(`${BASE_URL}/signup/mentee`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(value),
+  });
 
-  const value = Object.fromEntries(filteredEntries) as MenteeSignUpType;
+  const data = await res.json();
+  if (!res.ok) return { value: value, message: data, isError: true };
 
-  console.log(`Sending data for mentee sign up:`, value);
-
-  try {
-    const res = await fetch(`${baseURL}/signup/mentee`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(value),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || '회원가입 실패');
-    }
-    return {
-      value: data,
-      message: '회원가입 성공',
-      isError: false,
-    };
-  } catch (error: unknown) {
-    console.error('회원가입 요청 중 오류 발생:', error);
-
-    let errorMessage = '회원가입 중 오류가 발생했습니다. 다시 시도해주세요.';
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    return {
-      value,
-      message: `회원가입 실패: ${errorMessage}`,
-      isError: true,
-    };
-  }
+  redirect('/login');
 }
 
 export async function mentorSignUp(
@@ -129,11 +73,38 @@ export async function mentorSignUp(
   formData: FormData
 ): Promise<ActionResType<MentorSignUpType, string>> {
   const value = Object.fromEntries(formData) as MentorSignUpType;
-  const message = '멘토 회원가입 액션';
 
-  return {
-    value: value,
-    message: message,
-    isError: false,
-  };
+  const res = await fetch(`${BASE_URL}/signup/mentor`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(value),
+  });
+
+  const data = await res.json();
+  if (!res.ok) return { value: value, message: data, isError: true };
+
+  redirect('/login');
+}
+
+export async function login(
+  prevState: ActionResType<LoginType, string>,
+  formData: FormData
+): Promise<ActionResType<LoginType, string>> {
+  const value = Object.fromEntries(formData) as LoginType;
+
+  const res = await fetch(`${BASE_URL}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(value),
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    return { value: value, message: data, isError: true };
+  }
+  redirect('/');
 }

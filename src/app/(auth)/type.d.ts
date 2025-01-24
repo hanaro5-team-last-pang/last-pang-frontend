@@ -21,3 +21,8 @@ export type MentorSignUpType = {
   confirmedPassword: string;
   birth: string;
 };
+
+export type LoginType = {
+  email: string;
+  password: string;
+};

@@ -1,6 +1,6 @@
 'use client';
 
-import { login } from '@/app/action';
+import { login } from '@/app/(auth)/action';
 import Button from '@/components/atoms/Button';
 import Checkbox from '@/components/atoms/Checkbox';
 import IconBadge from '@/components/atoms/IconBadge';

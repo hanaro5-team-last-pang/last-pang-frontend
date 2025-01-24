@@ -1,16 +1,15 @@
 'use client';
 
-import { mentorSignUp } from '@/app/(auth)/action';
+import { mentorSignUp, sendEmail } from '@/app/(auth)/action';
 import Button from '@/components/atoms/Button';
 import IconBadge from '@/components/atoms/IconBadge';
 import Input from '@/components/atoms/Input';
 import { AiFillEye } from 'react-icons/ai';
 import { MdArrowOutward } from 'react-icons/md';
 import Link from 'next/link';
-import { useActionState, useState } from 'react';
+import { useActionState, useRef, useState } from 'react';
 
 export default function MentorSignUpForm() {
-  const [hide, setHide] = useState(false);
   const [state, formAction] = useActionState(mentorSignUp, {
     value: {
       code: '',
@@ -20,9 +19,13 @@ export default function MentorSignUpForm() {
       confirmedPassword: '',
       birth: '',
     },
-    message: '멘티 회원가입 이전',
+    message: '멘토 회원가입 이전',
     isError: false,
   });
+
+  const [responseMessage, setResponseMessage] = useState<string>('');
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [hide, setHide] = useState(false);
 
   const onToggleHide = () => {
     setHide((prev) => {
@@ -30,6 +33,17 @@ export default function MentorSignUpForm() {
       newHide = !newHide;
       return newHide;
     });
+  };
+
+  const handleSendEmail = async () => {
+    if (emailRef.current) {
+      const email = emailRef.current.value;
+      const response = await sendEmail(email);
+      setResponseMessage(response.message);
+      if (response.isError) {
+        setResponseMessage('이메일 전송에 실패했습니다.');
+      }
+    }
   };
 
   return (
@@ -60,13 +74,19 @@ export default function MentorSignUpForm() {
         defaultValue={state.value.email}
         className="my-2 text-gray-400 bg-white h-[42px]"
         labelClassName="font-bold"
+        ref={emailRef}
       >
         <Button
           type="button"
           text="인증"
+          onClick={handleSendEmail}
           className="bg-ourGreen text-xs px-4 py-2 rounded-xl whitespace-nowrap text-white"
         />
       </Input>
+      <div>
+        {/* 응답 메시지  : Toast로 바꾸기*/}
+        {responseMessage && <p className="text-hanaGreen">{responseMessage}</p>}
+      </div>
       <Input
         name="password"
         label="비밀번호"

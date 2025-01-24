@@ -10,11 +10,6 @@ export type BaseResType<T> = {
   result: T;
 };
 
-export type LoginType = {
-  email: string;
-  password: string;
-};
-
 export type ChatResponseType = {
   readonly userId: number;
   readonly username: string;
