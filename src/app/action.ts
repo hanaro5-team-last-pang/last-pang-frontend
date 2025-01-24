@@ -3,24 +3,10 @@
 import {
   ActionResType,
   ChangeProfileFormType,
-  LoginType,
   SubmitReviewFormType,
   openMentoringFormType,
+  AuthType,
 } from '@/types/hanaHakdang';
-
-export async function login(
-  prevState: ActionResType<LoginType, string>,
-  formData: FormData
-): Promise<ActionResType<LoginType, string>> {
-  const value = Object.fromEntries(formData) as LoginType;
-  const message = '로그인 액션';
-
-  return {
-    value: value,
-    message: message,
-    isError: false,
-  };
-}
 
 //검색 서버액션 예시
 export async function handleSearchAction(formData: FormData) {

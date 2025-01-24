@@ -1,12 +1,12 @@
 'use client';
 
-// 로그아웃 이벤트로 인한 클라이언트 컴포넌트로 변환 필요
 import Button from '@/components/atoms/Button';
 import Dropdown from '@/components/atoms/Dropdown';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { PiShoppingBagOpen, PiUser, PiArrowSquareOut } from 'react-icons/pi';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 interface ProfileDropdownProps {
   userInfo: {
@@ -15,6 +15,12 @@ interface ProfileDropdownProps {
     userImage: string;
     userRole: string;
   };
+}
+
+function deleteCookie(name: string) {
+  document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+  console.log('로그아웃되었습니다.');
+  redirect('/login');
 }
 
 export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
@@ -57,7 +63,7 @@ export default function ProfileDropdown({ userInfo }: ProfileDropdownProps) {
     <Button
       className="flex my-2 items-center"
       type="button"
-      onClick={() => console.log('로그아웃되었습니다.')}
+      onClick={() => deleteCookie('jenkins-timestamper-offset')}
     >
       <div className="flex items-center justify-center bg-gray-100 rounded-lg p-2">
         <PiArrowSquareOut />

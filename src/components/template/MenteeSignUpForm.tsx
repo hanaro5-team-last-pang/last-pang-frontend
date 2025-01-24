@@ -25,6 +25,7 @@ export default function MenteeSignUpForm() {
 
   // 이메일 인증에 필요한 value
   const emailRef = useRef<HTMLInputElement>(null);
+  const [responseMessage, setResponseMessage] = useState<string>('');
   const [hide, setHide] = useState(false);
 
   const onToggleHide = () => {
@@ -39,11 +40,9 @@ export default function MenteeSignUpForm() {
     if (emailRef.current) {
       const email = emailRef.current.value;
       const response = await sendEmail(email);
-
-      if (response.success) {
-        alert('이메일이 전송되었습니다.');
-      } else {
-        alert(response.message);
+      setResponseMessage(response.message);
+      if (response.isError) {
+        setResponseMessage('유효한 이메일을 입력하세요');
       }
     }
   };
@@ -77,6 +76,10 @@ export default function MenteeSignUpForm() {
           className="bg-ourGreen text-xs px-4 py-2 rounded-xl whitespace-nowrap text-white"
         />
       </Input>
+      <div>
+        {/* 응답 메시지  : Toast로 바꾸기*/}
+        {responseMessage && <p className="text-hanaGreen">{responseMessage}</p>}
+      </div>
       <Input
         name="password"
         label="비밀번호"
