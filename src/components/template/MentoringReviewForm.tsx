@@ -8,7 +8,7 @@ import { FaStar } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  lectureId: string;
+  lectureId: number;
 }
 
 export default function MentoringReviewForm(props: Props) {

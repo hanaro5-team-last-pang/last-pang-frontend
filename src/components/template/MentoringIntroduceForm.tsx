@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  lectureId: string;
+  lectureId: number;
 }
 
 export default function MentoringIntroduceForm(props: Props) {

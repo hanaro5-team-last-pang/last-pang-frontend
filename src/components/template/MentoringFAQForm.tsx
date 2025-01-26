@@ -1,14 +1,13 @@
 'use client';
 
 import { getLectureFaqs, postFaq } from '@/app/(main)/mentorings/actions';
-import { FaqFormType, FaqResponseType } from '@/app/(main)/mentorings/type';
+import { FaqResponseType } from '@/app/(main)/mentorings/type';
 import Button from '@/components/atoms/Button';
 import FAQList from '@/components/organisms/FAQList';
-import { ActionResType } from '@/hanaHakdang';
 import { useActionState, useEffect, useState } from 'react';
 
 interface Props {
-  lectureId: string;
+  lectureId: number;
 }
 
 export default function MentoringFAQForm(props: Props) {

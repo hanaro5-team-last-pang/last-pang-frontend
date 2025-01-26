@@ -5,11 +5,17 @@ import MentoringDescriptionForm from '@/components/template/MentoringDescription
 import MentoringFAQForm from '@/components/template/MentoringFAQForm';
 import MentoringIntroduceForm from '@/components/template/MentoringIntroduceForm';
 import MentoringReviewForm from '@/components/template/MentoringReviewForm';
+import { notFound } from 'next/navigation';
 
 type Params = Promise<{ id: string }>;
 
 export default async function Page(props: { params: Params }) {
-  const { id: lectureId } = await props.params;
+  const { id } = await props.params;
+
+  const lectureId = Number(id);
+  if (isNaN(lectureId)) {
+    notFound();
+  }
 
   const lectureData = await getLectureData(lectureId);
 

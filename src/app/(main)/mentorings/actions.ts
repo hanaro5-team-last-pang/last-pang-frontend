@@ -8,21 +8,13 @@ import {
   ReviewPageResponseType,
 } from '@/app/(main)/mentorings/type';
 import { BASE_HEADERS, BASE_URL } from '@/constant';
-import { ActionResType, BaseResType } from '@/hanaHakdang';
+import { ActionResType, BaseResType } from '@/types/hanaHakdang';
 import { notFound } from 'next/navigation';
 
 // TODO: 개발용
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 
-export async function getLectureData(lectureIdStr: string) {
-  let lectureId: number;
-  try {
-    lectureId = Number(lectureIdStr);
-  } catch (e) {
-    console.error('잘못된 형식의 강의 ID입니다.', e);
-    notFound();
-  }
-
+export async function getLectureData(lectureId: number) {
   // TODO: 추후 삭제 필요
   await sleep();
 
@@ -56,15 +48,7 @@ export async function getLectureData(lectureIdStr: string) {
   return result.result;
 }
 
-export async function getProfileCard(lectureIdStr: string) {
-  let lectureId: number;
-  try {
-    lectureId = Number(lectureIdStr);
-  } catch (e) {
-    console.error('잘못된 형식의 강의 ID입니다.', e);
-    notFound();
-  }
-
+export async function getProfileCard(lectureId: number) {
   // TODO: 추후 삭제 필요
   await sleep();
 
@@ -103,15 +87,7 @@ export async function getProfileCard(lectureIdStr: string) {
   return result.result;
 }
 
-export async function getLectureReviews(lectureIdStr: string) {
-  let lectureId: number;
-  try {
-    lectureId = Number(lectureIdStr);
-  } catch (e) {
-    console.error('잘못된 형식의 강의 ID입니다.', e);
-    notFound();
-  }
-
+export async function getLectureReviews(lectureId: number) {
   // TODO: 추후 삭제 필요
   await sleep();
 
@@ -177,15 +153,7 @@ export async function getLectureReviews(lectureIdStr: string) {
   return result.result;
 }
 
-export async function getLectureFaqs(lectureIdStr: string) {
-  let lectureId: number;
-  try {
-    lectureId = Number(lectureIdStr);
-  } catch (e) {
-    console.error('잘못된 형식의 강의 ID입니다.', e);
-    notFound();
-  }
-
+export async function getLectureFaqs(lectureId: number) {
   // TODO: 추후 삭제 필요
   await sleep();
 
