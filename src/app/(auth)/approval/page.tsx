@@ -1,22 +1,20 @@
 'use client';
 
 import { verifyEmail } from '@/app/(auth)/action';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
   const [isError, setIsError] = useState<boolean>(false);
 
+  const email = searchParams.get('email');
+  const authToken = searchParams.get('authToken');
+
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const email = searchParams.get('email');
-    const authToken = searchParams.get('authToken');
-
-    console.log('searchParams value:', email, authToken);
-
     if (email && authToken) {
       setLoading(true);
 

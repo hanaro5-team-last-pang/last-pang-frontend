@@ -51,19 +51,24 @@ export async function menteeSignUp(
   prevState: ActionResType<MenteeSignUpType, string>,
   formData: FormData
 ): Promise<ActionResType<MenteeSignUpType, string>> {
-  const value = Object.fromEntries(formData) as MenteeSignUpType;
-  console.log(value);
+  const signUpForm: MenteeSignUpType = {
+    name: formData.get('name') as string,
+    email: formData.get('email') as string,
+    password: formData.get('password') as string,
+    confirmedPassword: formData.get('confirmedPassword') as string,
+    birth: formData.get('birth') as string,
+  };
 
   const res = await fetch(`${BASE_URL}/signup/mentee`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(value),
+    body: JSON.stringify(signUpForm),
   });
 
   const data = await res.json();
-  if (!res.ok) return { value: value, message: data, isError: true };
+  if (!res.ok) return { value: signUpForm, message: data, isError: true };
 
   redirect('/login');
 }
@@ -104,6 +109,7 @@ export async function login(
 
   if (!res.ok) {
     const data = await res.json();
+    console.log(data);
     return { value: value, message: data, isError: true };
   }
   redirect('/');

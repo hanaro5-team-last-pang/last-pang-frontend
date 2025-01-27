@@ -1,6 +1,7 @@
+import StompConnectionProvider from '@/provider/StompConnectionProvider';
 import React, { ReactNode } from 'react';
 
-export default async function Layout({
+export default function Layout({
   children,
   modal,
 }: {
@@ -8,9 +9,13 @@ export default async function Layout({
   modal: ReactNode;
 }) {
   return (
-    <>
-      {children}
+    <StompConnectionProvider>
+      <div className="h-screen p-2 overflow-hidden">
+        <div className="h-full grid grid-cols-1 lg:grid-cols-[1fr_15fr_7fr] rounded-lg border-4 border-gray-300">
+          {children}
+        </div>
+      </div>
       {modal}
-    </>
+    </StompConnectionProvider>
   );
 }
